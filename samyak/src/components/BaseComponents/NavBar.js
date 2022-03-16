@@ -1,3 +1,5 @@
+import './NavBar.css';
+
 const NavBar = () => {
   return (
     <div className="App__navbar">
