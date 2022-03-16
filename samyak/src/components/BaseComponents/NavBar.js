@@ -1,5 +1,7 @@
 import './NavBar.css';
 
+import { Link } from "react-router-dom";
+
 const NavBar = () => {
   return (
     <div className="App__navbar">
@@ -19,22 +21,22 @@ const NavBar = () => {
             <div class="main-menu">
               <ul>
                 <li>
-                  <a href="index.html">Home - Full-width</a>
+                  <Link to={`/aboutus`}>ABOUT US</Link>
                 </li>
                 <li>
-                  <a href="masonry.html">Home - Masonry</a>
+                  <Link to={`/events`}>EVENTS</Link>
                 </li>
                 <li>
-                  <a href="grid.html">Home - Small-width</a>
+                  <Link to={`/gallery`}>GALLERY</Link>
                 </li>
                 <li>
-                  <a href="about.html">About Us</a>
+                  <Link to={`/oursponsors`}>OUR SPONSORS</Link>
                 </li>
                 <li>
-                  <a href="blog.html">Blog Entries</a>
+                  <Link to={`/team`}>TEAM</Link>
                 </li>
                 <li>
-                  <a href="single-post.html">Single Post</a>
+                  <Link to={`/join`}>JOIN</Link>
                 </li>
               </ul>
               <p>We create awesome templates for you.</p>
@@ -42,6 +44,7 @@ const NavBar = () => {
           </div>
         </div>
       </section>
+      <div className='navbar__behindblock'></div>
     </div>
   );
 };
