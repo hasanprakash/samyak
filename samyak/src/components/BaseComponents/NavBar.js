@@ -39,7 +39,6 @@ const NavBar = () => {
                   <Link to={`/join`}>JOIN</Link>
                 </li>
               </ul>
-              <p>We create awesome templates for you.</p>
             </div>
           </div>
         </div>
