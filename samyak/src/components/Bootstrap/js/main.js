@@ -1,6 +1,7 @@
+import $ from 'jquery';
 $(document).ready(function($) {
 
-	'use strict';
+	// 'use strict';
 
         $(function() {
   
@@ -38,7 +39,7 @@ $(document).ready(function($) {
           
           // toggle active class on and off. added 1/24/17
           $( "a.scrollTo" ).each(function() {
-            if(scrollTo == $(this).attr('data-scrollTo')){
+            if(scrollTo === $(this).attr('data-scrollTo')){
               $(this).addClass('active');
             }else{
               $(this).removeClass('active');
