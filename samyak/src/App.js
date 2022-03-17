@@ -1,10 +1,15 @@
 import './App.css';
 
-//Bootstrap
+// NAVBAR
+// import './components/Bootstrap/js/vendor/jquery-1.11.2.min.js';
 import './components/Bootstrap/css/bootstrap.min.css'
-import './components/Bootstrap/css/light-box.css';
-import './components/Bootstrap/css/templatemo-style.css';
+import './components/Bootstrap/css/light-box.css'
+import './components/Bootstrap/css/templatemo-style.css'
 import './components/Bootstrap/js/main.js';
+
+// LOGIN AND REGISTRATION PAGE
+import './components/Bootstrap/js/join_main.js';
+import './components/Bootstrap/css/join_style.css';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
