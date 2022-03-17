@@ -17,7 +17,7 @@ const NavBar = () => {
       </nav>
       <section class="overlay-menu">
         <div class="container">
-          <div class="row">
+          <div class="row" style={{display: 'block'}}>
             <div class="main-menu">
               <ul>
                 <li>
