@@ -1,7 +1,18 @@
 import BaseButton from '../UI/BaseButton';
 import BaseInput from '../UI/BaseInput';
 
+import axios from 'axios';
+
 const RegisterForm = () => {
+  const registerFormHandler = (e) => {
+    e.preventDefault();
+    axios
+      .get('http://127.0.0.1:8000/users')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch(err => console.log(err));
+  }
   return (
     <form action="#" class="signin-form">
       <div class="form-group">
@@ -30,7 +41,7 @@ const RegisterForm = () => {
         <BaseInput placeholder="Branch" />
       </div>
       <div class="form-group">
-        <BaseButton>Sign In</BaseButton>
+        <BaseButton onClick={registerFormHandler}>Register</BaseButton>
       </div>
       <div class="form-group d-md-flex">
         <div class="w-50">
@@ -41,7 +52,7 @@ const RegisterForm = () => {
           </label>
         </div>
         <div class="w-50 text-md-right">
-          <a href="#" style={{ color: "#fff" }}>
+          <a href style={{ color: "#fff" }}>
             Forgot Password
           </a>
         </div>

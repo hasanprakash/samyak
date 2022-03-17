@@ -31,10 +31,10 @@ const Join = () => {
                 <DisplayForm toBeDisplayed={toBeDisplayed}/>
                 <p className="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
                 <div className="social d-flex text-center">
-                  <a href="#" className="px-2 py-2 mr-md-1 rounded">
+                  <a href className="px-2 py-2 mr-md-1 rounded">
                     <span className="ion-logo-facebook mr-2"></span> Facebook
                   </a>
-                  <a href="#" onClick={toggleForm} className="px-2 py-2 ml-md-1 rounded">
+                  <a href onClick={toggleForm} className="px-2 py-2 ml-md-1 rounded">
                     <span className="ion-logo-twitter mr-2"></span> Sign Up
                   </a>
                 </div>
