@@ -20,13 +20,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 from home import views
 
-router = routers.SimpleRouter()
-router.register(r'users', views.UsersViewSet)
+router = routers.DefaultRouter()
+router.register(r'users', views.UsersView, 'user')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('home/', include('home.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + router.urls
+    path('api/', include(router.urls)),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
