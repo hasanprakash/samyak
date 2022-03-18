@@ -35,7 +35,7 @@ class RegisterForm extends Component {
           ))}
         </a>
 
-        <form action="#" className="signin-form">
+        <form className="signin-form">
           <div className="form-group">
             <BaseInput placeholder="Username" />
           </div>
@@ -73,7 +73,7 @@ class RegisterForm extends Component {
               </label>
             </div>
             <div className="w-50 text-md-right">
-              <a href="#" style={{ color: "#fff" }}>
+              <a href style={{ color: "#fff" }}>
                 Forgot Password
               </a>
             </div>
