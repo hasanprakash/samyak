@@ -16,5 +16,5 @@ def home(request):
 class UsersViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializers
-    permission_classes = [permissions.AllowAny]
+    #permission_classes = [permissions.AllowAny]
 
