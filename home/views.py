@@ -28,5 +28,7 @@ class UsersViewSet(viewsets.ModelViewSet):
     
     def create(self, request, pk=None):
         print(request.data)
+        displayData = request.data
         print("IN CREATE")
+        User.objects.create_user(username=displayData['username'], email=displayData['email'], password=displayData['password'])
         return Response({"message": "POST, World!"})
