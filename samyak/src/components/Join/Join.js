@@ -17,7 +17,7 @@ const Join = () => {
             setToBeDisplayed("LoginForm");
     }
   return (
-    <div className="img js-fullheight join__container" style={{backgroundImage: `url(${bg})`}}>
+    <div className="img js-fullheight join__container" style={{backgroundImage: `url(${bg})`, objectFit: 'cover'}}>
       <section class="ftco-section" style={{padding: '2em 0'}}>
         <div className="container">
           <div className="row justify-content-center">

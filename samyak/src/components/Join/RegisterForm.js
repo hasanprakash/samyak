@@ -23,6 +23,19 @@ class RegisterForm extends Component {
       .catch((err) => console.log(err));
   };
 
+  registerFormHandler(event) {
+    event.preventDefault();
+    let data = {}
+    data.username = event.target.username.value;
+    data.password = event.target.password.value;
+    data.email = event.target.email.value;
+    data.year = event.target.year.value;
+    data.college = event.target.college.value;
+    data.phoneno = event.target.phoneno.value;
+    data.branch = event.target.branch.value;
+    console.log(data);
+  }
+
   render() {
     const { userList } = this.state;
     return (
@@ -35,31 +48,31 @@ class RegisterForm extends Component {
           ))}
         </a>
 
-        <form className="signin-form">
+        <form className="signin-form" onSubmit={this.registerFormHandler}>
           <div className="form-group">
-            <BaseInput placeholder="Username" />
+            <BaseInput name="username" type="text" placeholder="Username" />
           </div>
           <div className="form-group">
-            <BaseInput placeholder="Password" />
+            <BaseInput id="password-field" name="password" type="password" placeholder="Password" />
             <span
               toggle="#password-field"
               className="fa fa-fw fa-eye field-icon toggle-password"
             ></span>
           </div>
           <div className="form-group">
-            <BaseInput placeholder="Email" />
+            <BaseInput name="email" type="email" placeholder="Email" />
           </div>
           <div className="form-group">
-            <BaseInput placeholder="Year" />
+            <BaseInput name="year" type="number" placeholder="Year" />
           </div>
           <div className="form-group">
-            <BaseInput placeholder="College" />
+            <BaseInput name="college" type="text" placeholder="College" />
           </div>
           <div className="form-group">
-            <BaseInput placeholder="Phone Number" />
+            <BaseInput name="phoneno" type="number" placeholder="Phone Number" />
           </div>
           <div className="form-group">
-            <BaseInput placeholder="Branch" />
+            <BaseInput name="branch" type="text" placeholder="Branch" />
           </div>
           <div className="form-group">
             <BaseButton>Sign In</BaseButton>
