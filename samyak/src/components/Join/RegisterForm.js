@@ -2,6 +2,7 @@ import BaseButton from "../UI/BaseButton";
 import BaseInput from "../UI/BaseInput";
 import React, { Component } from "react";
 import axios from "axios";
+import BaseDropDown from "../UI/BaseDropDown";
 //import {useState} from 'react';
 
 class RegisterForm extends Component {
@@ -23,6 +24,11 @@ class RegisterForm extends Component {
       .catch((err) => console.log(err));
   };
 
+  genderData = ['Gender', 'Male', 'Female', 'Others']
+  yearData = ['Select Year', '1st', '2nd', '3rd', '4th', 'Faculty', 'Alumni', 'Others']
+  departmentData = ['Select Department', 'CSE', 'ECE', 'EEE', 'ME', 'ECM', 'BCA', 'CE', 'IT', 'CHE', 'MECH', 'CIVIL', 'LAW', 'BBA', 'MBA', 'CSIT', 'BT', 'AI&DS', 'HOTEL MANG', 'FINANCE', 'ARCH.T', 'Others']
+  collegeData = ['Select College', 'KL Vijayawada', 'KL Hyderabad', 'Others']
+
   registerFormHandler(event) {
     event.preventDefault();
     let data = {}
@@ -32,7 +38,9 @@ class RegisterForm extends Component {
     data.year = event.target.year.value.trim();
     data.college = event.target.college.value.trim();
     data.phoneno = event.target.phoneno.value.trim();
+    data.gender = event.target.gender.value.trim();
     data.branch = event.target.branch.value.trim();
+
     axios
       .post("http://localhost:8000/api/users/", data)
       .then((res) => console.log(res.data))
@@ -66,13 +74,16 @@ class RegisterForm extends Component {
             <BaseInput name="email" type="email" placeholder="Email" />
           </div>
           <div className="form-group">
-            <BaseInput name="year" type="number" placeholder="Year" />
+            <BaseDropDown name="year" options={this.yearData} />
           </div>
           <div className="form-group">
-            <BaseInput name="college" type="text" placeholder="College" />
+            <BaseDropDown name="college" options={this.collegeData} />
           </div>
           <div className="form-group">
             <BaseInput name="phoneno" type="number" placeholder="Phone Number" />
+          </div>
+          <div className="form-group">
+            <BaseDropDown name="gender" options={this.genderData} />
           </div>
           <div className="form-group">
             <BaseInput name="branch" type="text" placeholder="Branch" />
