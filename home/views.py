@@ -13,7 +13,7 @@ from rest_framework.response import Response
 def home(request):
     return HttpResponse("<h1>Samyak Project</h1>")
 
-class UsersViewSet(viewsets.ModelViewSet):
+class UsersView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializers
     #permission_classes = [permissions.AllowAny]
