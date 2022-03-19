@@ -1,4 +1,4 @@
-class Validations {
+module.exports = class Validations {
     constructor(flash) {
         this.flash = flash;
     }
@@ -20,6 +20,3 @@ class Validations {
     }
 
 }
-
-
-module.exports = Validations;

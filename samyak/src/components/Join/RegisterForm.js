@@ -4,9 +4,9 @@ import React from "react";
 import axios from "axios";
 import BaseDropDown from "../UI/BaseDropDown";
 
-import Validations from "../../Utils/Validations";
-
 import { useSnackbar } from 'notistack';
+
+import Validations from "../../Utils/Validations";
 
 const RegisterForm = (props) => {
   let genderData = ['Gender', 'Male', 'Female', 'Others']
