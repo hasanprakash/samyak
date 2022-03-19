@@ -7,7 +7,6 @@ import './Join.css';
 
 import bg from '../Bootstrap/img/join_background.jpg';
 import DisplayForm from './DisplayForm';
-import NavBarSpace from '../BaseComponents/NavBarSpace';
 
 const Join = () => {
     const [toBeDisplayed, setToBeDisplayed] = useState("LoginForm");
@@ -27,7 +26,6 @@ const Join = () => {
     }
   return (
     <div className="img js-fullheight join__container" style={{backgroundImage: `url(${bg})`, width: '100%', height: '100%', objectFit: 'cover'}}>
-      <NavBarSpace />
       <section className="ftco-section" style={{padding: '2em 0'}}>
         <div className="container">
           <div className="row justify-content-center">
