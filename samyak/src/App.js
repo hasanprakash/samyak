@@ -14,6 +14,9 @@ import './components/Bootstrap/css/join_style.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import NavBar from './components/BaseComponents/NavBar';
+import NavBarSpace from './components/BaseComponents/NavBarSpace';
+import Footer from './components/BaseComponents/Footer';
+
 import AboutUs from './components/AboutUs/AboutUs';
 import Events from './components/Events/Events';
 import Gallery from './components/Gallery/Gallery';
@@ -26,6 +29,7 @@ function App() {
     <>
       <Router>
         <NavBar />
+        <NavBarSpace />
         <Routes>
           <Route exact path="/aboutus" element={<AboutUs />} />
           <Route exact path="/events" element={<Events />} />
@@ -34,7 +38,7 @@ function App() {
           <Route exact path="/team" element={<Team />} />
           <Route exact path="/join" element={<Join />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </Router>
     </>
   );
