@@ -20,6 +20,7 @@ import Gallery from './components/Gallery/Gallery';
 import OurSponsors from './components/OurSponsors/OurSponsors';
 import Team from './components/Team/Team';
 import Join from './components/Join/Join';
+import Admin from './components/Admin/Admin';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route exact path="/oursponsors" element={<OurSponsors />} />
           <Route exact path="/team" element={<Team />} />
           <Route exact path="/join" element={<Join />} />
+          <Route exact path="/admin" element={<Admin />} />
         </Routes>
         {/* <Footer /> */}
       </Router>
