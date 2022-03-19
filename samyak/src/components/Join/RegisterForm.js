@@ -26,15 +26,15 @@ class RegisterForm extends Component {
   registerFormHandler(event) {
     event.preventDefault();
     let data = {}
-    data.username = event.target.username.value;
-    data.password = event.target.password.value;
-    data.email = event.target.email.value;
-    data.year = event.target.year.value;
-    data.college = event.target.college.value;
-    data.phoneno = event.target.phoneno.value;
-    data.branch = event.target.branch.value;
+    data.username = event.target.username.value.trim();
+    data.password = event.target.password.value.trim();
+    data.email = event.target.email.value.trim();
+    data.year = event.target.year.value.trim();
+    data.college = event.target.college.value.trim();
+    data.phoneno = event.target.phoneno.value.trim();
+    data.branch = event.target.branch.value.trim();
     axios
-      .post("api/users/", data)
+      .post("http://localhost:8000/api/users/", data)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   }
@@ -43,7 +43,7 @@ class RegisterForm extends Component {
     const { userList } = this.state;
     return (
       <div>
-        <a href>
+        <a href="true">
           {userList.map((userList) => (
             <p key={userList.username}>
               {userList.username}
@@ -78,18 +78,18 @@ class RegisterForm extends Component {
             <BaseInput name="branch" type="text" placeholder="Branch" />
           </div>
           <div className="form-group">
-            <BaseButton>Sign In</BaseButton>
+            <BaseButton>Sign Up</BaseButton>
           </div>
           <div className="form-group d-md-flex">
             <div className="w-50">
-              <label className="checkbox-wrap checkbox-primary">
+              {/* <label className="checkbox-wrap checkbox-primary">
                 Remember Me
                 <input type="checkbox" checked />
                 <span className="checkmark"></span>
-              </label>
+              </label> */}
             </div>
             <div className="w-50 text-md-right">
-              <a href style={{ color: "#fff" }}>
+              <a href="true" style={{ color: "#fff" }}>
                 Forgot Password
               </a>
             </div>

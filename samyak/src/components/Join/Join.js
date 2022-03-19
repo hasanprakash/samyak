@@ -7,35 +7,45 @@ import './Join.css';
 
 import bg from '../Bootstrap/img/join_background.jpg';
 import DisplayForm from './DisplayForm';
+import NavBarSpace from '../BaseComponents/NavBarSpace';
 
 const Join = () => {
     const [toBeDisplayed, setToBeDisplayed] = useState("LoginForm");
+    const [heading, setHeading] = useState("LOGIN");
+    const [goToSign, setGoToSign] = useState("Sign Up");
     const toggleForm = () => {
-        if(toBeDisplayed === "LoginForm") 
+        if(toBeDisplayed === "LoginForm")  {
+            setHeading("REGISTER");
             setToBeDisplayed("RegisterForm");
-        else
+            setGoToSign("Sign In");
+        }
+        else {
+            setHeading("LOGIN");
             setToBeDisplayed("LoginForm");
+            setGoToSign("Sign Up");
+        }
     }
   return (
-    <div className="img js-fullheight join__container" style={{backgroundImage: `url(${bg})`, objectFit: 'cover'}}>
-      <section class="ftco-section" style={{padding: '2em 0'}}>
+    <div className="img js-fullheight join__container" style={{backgroundImage: `url(${bg})`, width: '100%', height: '100%', objectFit: 'cover'}}>
+      <NavBarSpace />
+      <section className="ftco-section" style={{padding: '2em 0'}}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-6 text-center mb-5">
-              <h2 className="heading-section">LOGIN</h2>
+              <h2 className="heading-section">{ heading }</h2>
             </div>
           </div>
-          <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
-              <div class="login-wrap p-0">
+          <div className="row justify-content-center">
+            <div className="col-md-6 col-lg-4">
+              <div className="login-wrap p-0">
                 <DisplayForm toBeDisplayed={toBeDisplayed}/>
                 <p className="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
                 <div className="social d-flex text-center">
-                  <a href className="px-2 py-2 mr-md-1 rounded">
+                  <a href="true" className="px-2 py-2 mr-md-1 rounded">
                     <span className="ion-logo-facebook mr-2"></span> Facebook
                   </a>
-                  <a href onClick={toggleForm} className="px-2 py-2 ml-md-1 rounded">
-                    <span className="ion-logo-twitter mr-2"></span> Sign Up
+                  <a href="true" onClick={toggleForm} className="px-2 py-2 ml-md-1 rounded">
+                    <span className="ion-logo-twitter mr-2"></span> {goToSign}
                   </a>
                 </div>
               </div>
