@@ -14,7 +14,6 @@ import './components/Bootstrap/css/join_style.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import NavBar from './components/BaseComponents/NavBar';
-import NavBarSpace from './components/BaseComponents/NavBarSpace';
 import Footer from './components/BaseComponents/Footer';
 
 import AboutUs from './components/AboutUs/AboutUs';
@@ -30,7 +29,6 @@ function App() {
     <>
       <Router>
         <NavBar />
-        <NavBarSpace />
         <Routes>
           <Route exact path="/aboutus" element={<AboutUs />} />
           <Route exact path="/events" element={<Events />} />
