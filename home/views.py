@@ -30,7 +30,10 @@ class UsersViewSet(viewsets.ModelViewSet):
         print(request.data)
         displayData = request.data
         print("IN CREATE")
-        u = User.objects.create_user(username=displayData['username'], email=displayData['email'], password=displayData['password'])
-        Profile.objects.create(user=u, phone=displayData['phoneno'], college_name=displayData['college'], branch=displayData['branch']
-        , year_of_study=displayData['year'])
-        return Response({"message": "POST, World!"})
+        if User.objects.filter(username=displayData['username']).exists():
+            return Response({"status": False, "message": "Username Already Exists.!"})
+        else:
+            u = User.objects.create_user(username=displayData['username'], email=displayData['email'], password=displayData['password'])
+            Profile.objects.create(user=u, phone=displayData['phoneno'], college_name=displayData['college'], branch=displayData['branch']
+            , year_of_study=displayData['year'], gender=displayData['gender'])
+            return Response({"status": True, "message": "POST, World!"})
