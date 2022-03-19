@@ -9,6 +9,8 @@ import bg from '../Bootstrap/img/join_background.jpg';
 import DisplayForm from './DisplayForm';
 import NavBarSpace from '../BaseComponents/NavBarSpace';
 
+import { SnackbarProvider } from 'notistack';
+
 const Join = () => {
     const [toBeDisplayed, setToBeDisplayed] = useState("LoginForm");
     const [heading, setHeading] = useState("LOGIN");
@@ -28,7 +30,7 @@ const Join = () => {
   return (
     <div className="img js-fullheight join__container" style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
       <NavBarSpace />
-      <section className="ftco-section" style={{padding: '2em 0'}}>
+      <section className="ftco-section bg-black" style={{padding: '2em 0'}}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-6 text-center mb-5">
@@ -38,7 +40,9 @@ const Join = () => {
           <div className="row justify-content-center">
             <div className="col-md-6 col-lg-4">
               <div className="login-wrap p-0">
-                <DisplayForm toBeDisplayed={toBeDisplayed}/>
+                <SnackbarProvider maxSnack={5}>
+                  <DisplayForm toBeDisplayed={toBeDisplayed}/>
+                </SnackbarProvider>
                 <p className="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
                 <div className="social d-flex text-center">
                   <a href="#0" className="px-2 py-2 mr-md-1 rounded">
