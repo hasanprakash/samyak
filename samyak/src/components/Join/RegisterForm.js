@@ -33,7 +33,10 @@ class RegisterForm extends Component {
     data.college = event.target.college.value;
     data.phoneno = event.target.phoneno.value;
     data.branch = event.target.branch.value;
-    console.log(data);
+    axios
+      .post("api/users/", data)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
   }
 
   render() {

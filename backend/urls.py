@@ -21,7 +21,7 @@ from django.conf import settings
 from home import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UsersView, 'user')
+router.register(r'users', views.UsersViewSet, 'user')
 
 
 urlpatterns = [
