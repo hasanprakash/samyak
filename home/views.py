@@ -17,7 +17,3 @@ def home(request):
 class UsersView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializers
-    #permission_classes = [permissions.AllowAny]
-
-    # @action(detail=True, methods=['post'])
-    # def add_group(self, request, pk=None):
