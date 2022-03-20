@@ -4,6 +4,9 @@ class Validations {
     }
     serverValidations(username, email) {
         // check if user is already there in db
+        let isValid = true;
+
+        return isValid;
     }
 
     clientValidations(password, phoneno) {
