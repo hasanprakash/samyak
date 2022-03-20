@@ -32,7 +32,6 @@ class UsersViewSet(viewsets.ModelViewSet):
             return Response({"status": True, "message": "Login Successfull.!"})
         else:
             return Response({"status": False, "message": "Login Failed.!"})
-
     def create(self, request, pk=None):
         print(request.data)
         displayData = request.data
