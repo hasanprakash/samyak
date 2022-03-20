@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .serializers import UserSerializers
 from django.contrib.auth.models import User, Group
 from django.shortcuts import get_object_or_404
-
+from .models import Profile
 from rest_framework import serializers, viewsets
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -30,5 +30,10 @@ class UsersViewSet(viewsets.ModelViewSet):
         print(request.data)
         displayData = request.data
         print("IN CREATE")
-        User.objects.create_user(username=displayData['username'], email=displayData['email'], password=displayData['password'])
-        return Response({"message": "POST, World!"})
+        if User.objects.filter(username=displayData['username']).exists():
+            return Response({"status": False, "message": "Username Already Exists.!"})
+        else:
+            u = User.objects.create_user(username=displayData['username'], email=displayData['email'], password=displayData['password'])
+            Profile.objects.create(user=u, phone=displayData['phoneno'], college_name=displayData['college'], branch=displayData['branch']
+            , year_of_study=displayData['year'], gender=displayData['gender'])
+            return Response({"status": True, "message": "POST, World!"})
