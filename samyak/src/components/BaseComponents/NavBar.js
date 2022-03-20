@@ -20,22 +20,22 @@ const NavBar = () => {
           <div className="row" style={{display: 'block'}}>
             <div className="main-menu">
               <ul>
-                <li>
+                <li className='nav-element'>
                   <Link to={`/aboutus`}>ABOUT US</Link>
                 </li>
-                <li>
+                <li className='nav-element'>
                   <Link to={`/events`}>EVENTS</Link>
                 </li>
-                <li>
+                <li className='nav-element'>
                   <Link to={`/gallery`}>GALLERY</Link>
                 </li>
-                <li>
+                <li className='nav-element'>
                   <Link to={`/oursponsors`}>OUR SPONSORS</Link>
                 </li>
-                <li>
+                <li className='nav-element'>
                   <Link to={`/team`}>TEAM</Link>
                 </li>
-                <li>
+                <li className='nav-element'>
                   <Link to={`/join`}>JOIN</Link>
                 </li>
               </ul>

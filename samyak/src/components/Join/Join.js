@@ -80,11 +80,11 @@ const Join = () => {
                   &mdash; Or Sign In With &mdash;
                 </p>
                 <div className="social d-flex text-center">
-                  <a href="#0" className="px-2 py-2 mr-md-1 rounded">
+                  <a href={(e) => e.preventDefault()} className="px-2 py-2 mr-md-1 rounded">
                     <span className="ion-logo-facebook mr-2"></span> Facebook
                   </a>
                   <a
-                    href="#0"
+                    href={(e) => e.preventDefault()}
                     onClick={toggleForm}
                     className="px-2 py-2 ml-md-1 rounded"
                   >

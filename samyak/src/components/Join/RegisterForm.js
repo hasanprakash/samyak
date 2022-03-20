@@ -46,10 +46,10 @@ const RegisterForm = (props) => {
         </div>
         <div className="form-group">
           <BaseInput id="password-field" name="password" type="password" placeholder="Password" />
-          <span
+          {/* <span
             toggle="#password-field"
             className="fa fa-fw fa-eye field-icon toggle-password"
-          ></span>
+          ></span> */}
         </div>
         <div className="form-group">
           <BaseInput name="email" type="email" placeholder="Email" />

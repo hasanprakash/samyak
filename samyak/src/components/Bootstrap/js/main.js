@@ -58,7 +58,7 @@ $(document).ready(function ($) {
     return false;
   });
 
-  $(".menu-icon").click(function () {
+  $(".menu-icon, .nav-element").click(function () {
     $(this).toggleClass("active");
     $(".overlay-menu").toggleClass("open");
   });
