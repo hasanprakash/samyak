@@ -152,3 +152,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/assets')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+API_KEY = '4ccc5441d9da753781d931e2be3bbbdf'
+AUTH_TOKEN = '3053d73950d684a1af77e22ccb29126e'
+SALT = '9f1d3102f7624b4b95c9e91361b29997'
