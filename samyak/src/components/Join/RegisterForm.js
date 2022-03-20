@@ -1,7 +1,7 @@
+import React from "react";
+
 import BaseButton from "../UI/BaseButton";
 import BaseInput from "../UI/BaseInput";
-import React from "react";
-import axios from "axios";
 import BaseDropDown from "../UI/BaseDropDown";
 
 import { useSnackbar } from 'notistack';
@@ -30,15 +30,8 @@ const RegisterForm = (props) => {
 
     let validations = new Validations(flash);
 
-    if(validations.clientValidations(data.password, data.phoneno) &&
-       validations.serverValidations(data.username, data.email)) {
-      axios
-        .post("http://localhost:8000/api/users/", data)
-        .then((res) => console.log(res.data))
-        .catch((err) => console.log(err));
-    }
-    else {
-      console.log("Form is not valid");
+    if(validations.clientValidations(data)) {
+      validations.serverValidations(data);
     }
   }
 
@@ -68,7 +61,7 @@ const RegisterForm = (props) => {
           <BaseDropDown name="college" options={collegeData} />
         </div>
         <div className="form-group">
-          <BaseInput name="phoneno" type="number" placeholder="Phone Number (without country code)" />
+          <BaseInput name="phoneno" type="text" placeholder="Phone Number (without country code)" />
         </div>
         <div className="form-group">
           <BaseDropDown name="gender" options={genderData} />

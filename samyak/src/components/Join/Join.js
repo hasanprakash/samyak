@@ -22,8 +22,8 @@ const ImageHolder = styled.div`
   background-attachment: fixed;
 `;
 const ImageDarkner = styled.section`
-  background-color: ${props => props.bgcolor};
-  height: 100%;
+  background-color: ${(props) => props.bgcolor};
+  height: auto;
   width: 100%;
 `;
 
@@ -60,11 +60,11 @@ const Join = () => {
     <ImageHolder className="img js-fullheight join__container">
       <ImageDarkner
         className="ftco-section bg-black"
-        style={{padding: '2em 0'}}
+        style={{ padding: "2em 0" }}
         bgcolor={`rgba(0,0,0,${darkOpacity})`}
       >
         <NavBarSpace />
-        <div className="container">
+        <section className="container">
           <div className="row justify-content-center">
             <div className="col-md-6 text-center mb-5">
               <h2 className="heading-section">{heading}</h2>
@@ -94,7 +94,7 @@ const Join = () => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </ImageDarkner>
     </ImageHolder>
   );

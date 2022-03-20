@@ -5,7 +5,7 @@ const Darkness = () => {
   let totalMinutes = hours * 60 + minutes;
 
   // testing
-  // totalMinutes = 1400
+  // totalMinutes = 1300;
 
   // let darkness = totalMinutes > 7 * 60 + 30 && totalMinutes < 19 * 60 + 30 ? false : true;
   let timeIntervals = [

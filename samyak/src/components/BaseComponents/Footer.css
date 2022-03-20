@@ -28,11 +28,6 @@
     padding-bottom: 0.625rem;
   }
   /* Sticks footer to bottom */
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
   .container {
     flex: 1;
    
