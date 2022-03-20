@@ -10,8 +10,6 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from django.contrib.auth import authenticate, login, logout
-
 # Create your views here.
 
 def home(request):
@@ -27,11 +25,16 @@ class UsersViewSet(viewsets.ModelViewSet):
         print("IN LIST")
         username = request.query_params.get('username')
         password = request.query_params.get('password')
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            return Response({"status": True, "message": "Login Successfull.!"})
+        user_status = User.objects.filter(username=username).exists()
+        if(user_status):
+            user = User.objects.get(username=username)
+            if user.check_password(password):
+                return Response({"status": True, "message": "GET, World!"})
+            else:
+                return Response({"status": False, "message": "Wrong Password.!"})
         else:
-            return Response({"status": False, "message": "Login Failed.!"})
+            return Response({"status": False, "message": "User doesn't exist.!"})
+
     def create(self, request, pk=None):
         print(request.data)
         displayData = request.data

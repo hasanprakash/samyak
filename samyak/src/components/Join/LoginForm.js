@@ -9,13 +9,16 @@ const LoginForm = () => {
   const formHandler = (event) => {
     event.preventDefault();
     let data = {};
-    console.log(event.target);
     data.username = event.target.username.value.trim();
     data.password = event.target.password.value.trim();
-    console.log(data);
     axios
-      .get("http://localhost:8000/api/users/", { params: data})
-      .then((res) => console.log(res.data))
+      .get("http://localhost:8000/api/users/", { params: data })
+      .then((res) => {
+        if(!res.data.status) 
+          flash(res.data.message, 'error');
+        else
+          flash('Login Successful', 'success');
+      })
       .catch((e) => console.log(e));
   };
 
