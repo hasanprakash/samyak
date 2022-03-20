@@ -22,8 +22,10 @@ class UsersViewSet(viewsets.ModelViewSet):
     #permission_classes = [permissions.AllowAny]
 
     def list(self, request, pk=None):
-        print(request.data)
         print("IN LIST")
+        username = request.query_params.get('username')
+        password = request.query_params.get('password')
+        print(username, password)
         return Response({"message": "GET, World!"})
     
     def create(self, request, pk=None):
