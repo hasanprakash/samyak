@@ -1,24 +1,29 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .serializers import UserSerializers
+from .serializers import UserSerializers, PaymentSerializers, EventSerializers
 from django.contrib.auth.models import User, Group
 from django.shortcuts import get_object_or_404
-from .models import Profile
+from .models import Profile, Event, Payment
 from rest_framework import serializers, viewsets
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from instamojo_wrapper import Instamojo
+from django.conf import settings
+from rest_framework.views import APIView
+
+api = Instamojo(api_key=settings.API_KEY, auth_token=settings.AUTH_TOKEN)
 # Create your views here.
 
 def home(request):
     return HttpResponse("<h1>Samyak Project</h1>")
 
 class UsersViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
     serializer_class = UserSerializers
-    #permission_classes = [permissions.AllowAny]
+    queryset = User.objects.all()   
+    permission_classes = [permissions.IsAdminUser]
 
     def list(self, request, pk=None):
         print(request.query_params)
@@ -51,3 +56,10 @@ class UsersViewSet(viewsets.ModelViewSet):
             , year_of_study=displayData['year'], gender=displayData['gender'])
             return Response({"status": True, "message": "POST, World!"})
 
+class PaymentsViewSet(viewsets.ModelViewSet):  
+    serializer_class = PaymentSerializers
+    queryset = Payment.objects.all()
+
+class EventsViewSet(viewsets.ModelViewSet):
+    serializer_class = EventSerializers
+    queryset = Event.objects.all()

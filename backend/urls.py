@@ -21,11 +21,14 @@ from django.conf import settings
 from home import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UsersViewSet, 'user')
+router.register(r'users', views.UsersViewSet, basename='users')
+router.register(r'payments', views.PaymentsViewSet, basename='payments')
+router.register(r'events', views.EventsViewSet, basename='event')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('', include('home.urls'))
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + router.urls
 
