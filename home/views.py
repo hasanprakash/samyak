@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -22,20 +23,28 @@ class UsersViewSet(viewsets.ModelViewSet):
     #permission_classes = [permissions.AllowAny]
 
     def list(self, request, pk=None):
+        print(request.query_params)
         print("IN LIST")
         username = request.query_params.get('username')
         password = request.query_params.get('password')
-        print(username, password)
-        return Response({"message": "GET, World!"})
-    
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            return Response({"status": True, "message": "Login Successfull.!"})
+        else:
+            return Response({"status": False, "message": "Login Failed.!"})
     def create(self, request, pk=None):
         print(request.data)
         displayData = request.data
         print("IN CREATE")
         if User.objects.filter(username=displayData['username']).exists():
             return Response({"status": False, "message": "Username Already Exists.!"})
+        elif User.objects.filter(email=displayData['email']).exists():
+            return Response({"status": False, "message": "Email Already Exists.!"})
+        elif Profile.objects.filter(phone=displayData['phoneno']).exists():
+            return Response({"status": False, "message": "Phone Number Already Exists.!"})
         else:
             u = User.objects.create_user(username=displayData['username'], email=displayData['email'], password=displayData['password'])
             Profile.objects.create(user=u, phone=displayData['phoneno'], college_name=displayData['college'], branch=displayData['branch']
             , year_of_study=displayData['year'], gender=displayData['gender'])
             return Response({"status": True, "message": "POST, World!"})
+
