@@ -20,6 +20,8 @@ const RegisterForm = (props) => {
     event.preventDefault();
     let data = {}
     data.username = event.target.username.value.trim();
+    data.first_name = event.target.first_name.value.trim();
+    data.last_name = event.target.last_name.value.trim();
     data.password = event.target.password.value.trim();
     data.email = event.target.email.value.trim();
     data.year = event.target.year.value.trim();
@@ -43,6 +45,12 @@ const RegisterForm = (props) => {
       <form className="signin-form" onSubmit={registerFormHandler}>
         <div className="form-group">
           <BaseInput name="username" type="text" placeholder="Username" />
+        </div>
+        <div className="form-group">
+          <BaseInput name="first_name" type="text" placeholder="First Name" />
+        </div>
+        <div className="form-group">
+          <BaseInput name="last_name" type="text" placeholder="Last Name" />
         </div>
         <div className="form-group">
           <BaseInput id="password-field" name="password" type="password" placeholder="Password" />

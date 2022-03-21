@@ -1,25 +1,83 @@
-import axios from "axios";
+import axiosInstance from "../../axios";
 import BaseButton from "../UI/BaseButton";
 import BaseInput from "../UI/BaseInput";
 
 import { useSnackbar } from 'notistack';
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+  // let storage = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+  // const access_token = storage ? storage.user[0].tokens.access_token : null;
   const { enqueueSnackbar } = useSnackbar();
   const formHandler = (event) => {
     event.preventDefault();
     let data = {};
     data.username = event.target.username.value.trim();
     data.password = event.target.password.value.trim();
-    axios
-      .get("http://localhost:8000/api/users/", { params: data })
-      .then((res) => {
-        if(!res.data.status) 
-          flash(res.data.message, 'error');
-        else
-          flash('Login Successful', 'success');
+    axiosInstance
+      .post("token/", {
+        username: data.username,
+        password: data.password,
       })
-      .catch((e) => console.log(e));
+      .then((response) => {
+          // console.log(response.data);
+          if(response.status === 200) {
+            axiosInstance
+              .get("user/", {
+                headers: {
+                  Authorization: 'JWT ' + response.data.access,
+                }
+              })
+              .then((res) => {
+                let userobj = {
+                  user: [
+                    {
+                      tokens: {
+                        access_token: response.data.access,
+                        refresh_token: response.data.refresh,
+                      },
+                    },
+                    {
+                      details: {
+                        user_id: res.data.id,
+                        username: res.data.username,
+                        user_email: res.data.email,
+                        isAuth: true
+                      }
+                    }
+                  ]
+                } 
+                console.log(userobj);
+                if(localStorage.getItem('user'))
+                  flash("Session Updated!!", "success");
+                else
+                  flash("Login Successful", "success");
+                
+                localStorage.removeItem('user');
+                localStorage.setItem('user', JSON.stringify(userobj));
+                props.setIsAuth(true);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+        }
+      )
+      .catch((e) => {
+        // console.log(e);
+        enqueueSnackbar("Invalid Username or Password", {
+          variant: "error",
+        });
+      });
+    // axiosInstance
+    //   .get("users/", { params: data })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     if(!res.data.status) 
+    //       flash(res.data.message, 'error');
+    //     else
+    //       flash('Login Successful', 'success');
+    //   })
+    //   .catch((e) => console.log(e));
   };
 
 
@@ -51,7 +109,7 @@ const LoginForm = () => {
           </label> */}
         </div>
         <div className="w-50 text-md-right">
-          <a href="true" style={{ color: "#fff" }}>
+          <a href="0#" style={{ color: "#fff" }}>
             Forgot Password
           </a>
         </div>

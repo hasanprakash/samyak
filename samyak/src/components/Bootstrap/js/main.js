@@ -59,7 +59,7 @@ $(document).ready(function ($) {
   });
 
   $(".menu-icon, .nav-element").click(function () {
-    $(this).toggleClass("active");
+    $('.menu-icon').toggleClass("active");
     $(".overlay-menu").toggleClass("open");
   });
 });
