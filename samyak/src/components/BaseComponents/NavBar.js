@@ -1,15 +1,38 @@
+import { useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
+import { Link } from "react-router-dom";
 import './NavBar.css';
 
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
 
-const NavBar = () => {
+const Logout = styled.a`
+  cursor: pointer;
+`;
+
+const NavBar = (props) => {
+
+  const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
+
+  const userLogout = () => {
+    localStorage.removeItem('user');
+    enqueueSnackbar("Logged Out Successfully", {
+      variant: 'success',
+      anchorOrigin: {
+        vertical: 'top',
+        horizontal: 'right',
+      },
+    });
+    props.setIsAuth(false);
+    navigate.push('/join');
+  }
   return (
     <div className="App__navbar">
       <nav>
         <div className="logo">
-          <a href="index.html">
+          <Link to="/">
             High<em>way</em>
-          </a>
+          </Link>
         </div>
         <div className="menu-icon">
           <span></span>
@@ -36,8 +59,16 @@ const NavBar = () => {
                   <Link to={`/team`}>TEAM</Link>
                 </li>
                 <li className='nav-element'>
-                  <Link to={`/join`}>JOIN</Link>
+                  <Link to={`/profile`}>PROFILE</Link>
                 </li>
+                {props.isAuth ? 
+                  (<li className='nav-element'>
+                    <Logout onClick={userLogout}>LOGOUT</Logout>
+                  </li>) :
+                  (<li className='nav-element'>
+                    <Link to={`/join`}>JOIN</Link>
+                  </li>)
+                }
               </ul>
             </div>
           </div>

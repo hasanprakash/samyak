@@ -12,14 +12,13 @@ import NavBarSpace from "../BaseComponents/NavBarSpace";
 
 import { Darkness } from "../../Utils/Darkness";
 
-import { SnackbarProvider } from "notistack";
-
 const ImageHolder = styled.div`
   background-image: url(${bg});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  height: auto;
 `;
 const ImageDarkner = styled.section`
   background-color: ${(props) => props.bgcolor};
@@ -27,7 +26,7 @@ const ImageDarkner = styled.section`
   width: 100%;
 `;
 
-const Join = () => {
+const Join = (props) => {
   const [toBeDisplayed, setToBeDisplayed] = useState("LoginForm");
   const [heading, setHeading] = useState("LOGIN");
   const [goToSign, setGoToSign] = useState("Sign Up");
@@ -73,18 +72,16 @@ const Join = () => {
           <div className="row justify-content-center">
             <div className="col-md-6 col-lg-4">
               <div className="login-wrap p-0">
-                <SnackbarProvider maxSnack={5}>
-                  <DisplayForm toBeDisplayed={toBeDisplayed} />
-                </SnackbarProvider>
+                <DisplayForm toBeDisplayed={toBeDisplayed} setIsAuth={props.setIsAuth}/>
                 <p className="w-100 text-center">
                   &mdash; Or Sign In With &mdash;
                 </p>
                 <div className="social d-flex text-center">
-                  <a href={(e) => e.preventDefault()} className="px-2 py-2 mr-md-1 rounded">
+                  <a href="#0" className="px-2 py-2 mr-md-1 rounded">
                     <span className="ion-logo-facebook mr-2"></span> Facebook
                   </a>
                   <a
-                    href={(e) => e.preventDefault()}
+                    href="#0"
                     onClick={toggleForm}
                     className="px-2 py-2 ml-md-1 rounded"
                   >
