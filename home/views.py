@@ -1,8 +1,9 @@
 from dataclasses import fields
+import profile
 from pyexpat import model
 from django.http import HttpResponse
 from django.shortcuts import render
-from .serializers import UserSerializers, PaymentSerializers, EventSerializers
+from .serializers import UserSerializers, PaymentSerializers, EventSerializers, ProfileSerializers
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
@@ -58,11 +59,15 @@ class EventsViewSet(viewsets.ModelViewSet):
 
 
 
-
+class ProfileTempSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['phone']
 class UserTempSerializer(serializers.ModelSerializer):
+    profile = ProfileTempSerializers()
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'profile')
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'profile']
 class UserAPIView(RetrieveAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = UserTempSerializer

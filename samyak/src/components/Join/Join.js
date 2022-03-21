@@ -53,7 +53,7 @@ const Join = (props) => {
    * 2am to 4am -> 1 to 0.9
    */
   const darkOpacity = Darkness();
-  console.log(darkOpacity);
+  // console.log(darkOpacity);
 
   return (
     <ImageHolder className="img js-fullheight join__container">

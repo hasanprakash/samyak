@@ -26,8 +26,8 @@ const Darkness = () => {
 };
 
 const computeZ = (a, b, c, x, y) => {
-  console.log("Time Between ", a/60, " and ", b/60);
-  console.log("Opacity Between ", x+" "+y);
+  // console.log("Time Between ", a/60, " and ", b/60);
+  // console.log("Opacity Between ", x+" "+y);
   let z = (y - x) * (c - a) / (b - a) + x;
   return z;
 }

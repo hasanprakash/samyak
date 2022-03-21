@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axiosInstance from "../../axios";
 
 import { useSnackbar } from "notistack";
@@ -6,7 +6,8 @@ import { useSnackbar } from "notistack";
 const Profile = (props) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
+  const user = null;
 
   useEffect(() => {
     if(user !== null)
