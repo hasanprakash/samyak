@@ -41,6 +41,9 @@ CORS_ORIGIN_WHITELIST = [
     'https://samyaktesting.azurewebsites.net'
 ]
 
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'https://samyaktesting.azurewebsites.net']
+
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny'
