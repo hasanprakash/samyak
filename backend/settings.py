@@ -37,6 +37,8 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
+    'https://white-ocean-0477b4500.1.azurestaticapps.net',
+    'https://samyaktesting.azurewebsites.net'
 ]
 
 REST_FRAMEWORK = {
