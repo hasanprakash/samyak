@@ -75,7 +75,8 @@ function App() {
           <Route exact path="/oursponsors" element={<OurSponsors />} />
           <Route exact path="/team" element={<Team />} />
           <Route exact path="/join" element={<Join setIsAuth={setIsAuth}/>} />
-          <Route exact path="/profile" element={<Profile isAuth={isAuth} setIsAuth={setIsAuth}/>} />
+          <Route exact path="/profile" element={<Profile isAuth={isAuth} status="false" setIsAuth={setIsAuth}/>} />
+          { /** router for /profile?paymentstatus=success */ }
           <Route exact path="/admin" element={<Admin />} />
         </Routes>
         <Footer />

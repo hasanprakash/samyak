@@ -21,6 +21,8 @@ from instamojo_wrapper import Instamojo
 from django.conf import settings
 from rest_framework.views import APIView
 
+from home import models
+
 api = Instamojo(api_key=settings.API_KEY, auth_token=settings.AUTH_TOKEN, endpoint='https://test.instamojo.com/api/1.1/')
 # Create your views here.
 
@@ -59,15 +61,20 @@ class EventsViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
 
 
+class PaymentTempSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
+        fields = '__all__'
 class ProfileTempSerializers(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['phone']
+        fields = ['phone','branch','year_of_study','gender','college_name']
 class UserTempSerializer(serializers.ModelSerializer):
     profile = ProfileTempSerializers()
+    payment = PaymentTempSerializers()
     class Meta:
         model = User
-        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'profile']
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'profile', 'payment']
 class UserAPIView(RetrieveAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = UserTempSerializer
@@ -145,7 +152,7 @@ class PaymentSuccessView(APIView):
             p.is_paid = True
             p.save()
             # return Response({"status" : True})
-            return HttpResponseRedirect("http://localhost:3000/")
+            return HttpResponseRedirect("http://localhost:3000/profile")
         else:
             return Response({"status" : 'FAILED'})
     

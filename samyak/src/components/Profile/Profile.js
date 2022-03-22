@@ -10,6 +10,18 @@ const Profile = (props) => {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
+
+    const flash = (message, variant) => {
+      enqueueSnackbar(message, {
+        variant: variant,
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "left",
+        },
+        // autoHideDuration: duration,
+      });
+    };
+
     let storage = JSON.parse(localStorage.getItem("user"));
     if (props.isAuth) {
       axiosInstance
@@ -19,19 +31,23 @@ const Profile = (props) => {
           },
         })
         .then((response) => {
+          console.log(response.data);
+          if(response.data.payment.payment_status) {
+            flash("Payment Successful", "success")  
+            console.log("Payment Successful");
+          }
+          else {
+            flash("You have not made payment yet", "warning")
+            console.log("You have not made payment yet");
+          }
           setUser(response.data);
         })
         .catch((error) => {
           props.setIsAuth(false);
         });
     } else {
-      enqueueSnackbar("Session Expired or You Haven't LoggedIN yet!", {
-        variant: "error",
-        anchorOrigin: {
-          vertical: "top",
-          horizontal: "right",
-        },
-      });
+      flash("Session Expired or You Haven't LoggedIn yet!", "error");
+      console.log("Session Expired or You Haven't LoggedIn yet!");
     }
   }, [enqueueSnackbar, props]);
 
@@ -77,7 +93,7 @@ const Profile = (props) => {
   return (
     <div style={{backgroundColor: '#ccc'}}>
       <br></br>
-      <UserProfile user={user}/>
+      <UserProfile user={user} handlePayment={handlePayment}/>
       <ul>
         {user.length > 0 ? user.map((item) => (
           <li key={item.id}>
@@ -86,16 +102,6 @@ const Profile = (props) => {
         )) : null }
       </ul>
       <NavBarSpace user={user}/>
-      <button onClick={handlePayment}>
-      <a
-        // href="https://www.instamojo.com/@klusamyak/la0747a9640ac4948819986013fe771e9"
-        //href="https://test.instamojo.com/api/1.1/"
-        href="https://test.instamojo.com/@mchaitanyanathsingh/"
-        rel="im-checkout"
-        data-text="Pay"
-        data-css-style="color:#ffffff; background:#5300eb; width:180px; border-radius:30px"
-        data-layout="vertical"
-      >Paynow</a></button>
     </div>
   );
 };

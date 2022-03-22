@@ -1,16 +1,30 @@
-import styled from 'styled-components';
-import './UserProfile.css';
+import styled from "styled-components";
+import "./UserProfile.css";
 import NavBarSpace from "../BaseComponents/NavBarSpace";
-import DetailsObject from './DetailsObject';
+import DetailsObject from "./DetailsObject";
+import ProfileButton from "../UI/ProfileButton";
 
 const H6 = styled.h6`
   font-size: 2rem;
 `;
+const EditProfile = styled.div`
+  float: right;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const UserProfile = (props) => {
+  let paidStatus = props.user?props.user.payment?(props.user.payment.payment_status).toString():"false":"false";
+  // typecast boolean to string
+
   return (
     <div>
-      <div className="container" style={{ width: '100%', margin: 'auto', padding: 'auto'}}>
+      <div
+        className="container"
+        style={{ width: "100%", margin: "auto", padding: "auto" }}
+      >
         <NavBarSpace />
         <div className="main-body">
           <div className="row gutters-sm">
@@ -25,12 +39,21 @@ const UserProfile = (props) => {
                       width="150"
                     />
                     <div className="mt-3">
-                      <h4>John Doe</h4>
-                      <p className="text-secondary mb-1">Full Stack Developer</p>
-                      <p className="text-muted font-size-sm">
-                        Bay Area, San Francisco, CA
+                      <h4>{props.user?props.user.username:'@samyak'}</h4>
+                      <p className="text-secondary mb-1">
+                        {props.user?props.user.first_name+' '+props.user.last_name:''}
                       </p>
-                      <button className="btn btn-outline-primary">Change Password</button>
+                      <ProfileButton>Change Password</ProfileButton>
+                      {paidStatus?
+                        <ProfileButton>PAID</ProfileButton> :
+                      <ProfileButton onClick={props.handlePayment}>
+                        <a
+                          style={{color: '#007bff'}}
+                          href="#0"
+                        >
+                          Paynow
+                        </a>
+                      </ProfileButton>}
                     </div>
                   </div>
                 </div>
@@ -154,30 +177,42 @@ const UserProfile = (props) => {
             <div className="col-md-8">
               <div className="card mb-3">
                 <div className="card-body">
-                  <DetailsObject heading="Name" value={props.user.first_name + props.user.last_name}/>
+                  <DetailsObject
+                    heading="Name"
+                    value={props.user.first_name?(props.user.first_name +' '+ props.user.last_name):''}
+                  />
                   <br></br>
-                  <DetailsObject heading="Email" value={props.user.email}/>
+                  <DetailsObject heading="Email" value={props.user?props.user.email:'samyak@gmail.com'} />
                   <br></br>
-                  <DetailsObject heading="Phone" value={"+91"+(props.user && props.user.profile ? props.user.profile.phone : "9876543210")}/>
+                  <DetailsObject
+                    heading="Phone"
+                    value={
+                      "+91" +
+                      (props.user && props.user.profile
+                        ? props.user.profile.phone
+                        : "9876543210")
+                    }
+                  />
                   <br></br>
-                  <DetailsObject heading="Branch" value={"CSE"}/>
+                  <DetailsObject heading={"Branch"} value={ props.user?props.user.profile?props.user.profile.branch:'RRR':'RRR' } />
                   <br></br>
-                  <DetailsObject heading="Year" value="3rd"/>
+                  <DetailsObject heading="Year" value={ props.user?props.user.profile?props.user.profile.year_of_study:'3rd':'3rd' } />
                   <br></br>
-                  <DetailsObject heading="Username" value={props.user.username}/>
+                  <DetailsObject heading="Username"
+                    value={props.user.username}
+                  />
                   <br></br>
-                  <DetailsObject heading="College" value="KL Vijayawada"/>
+                  <DetailsObject heading="College" value={props.user?props.user.profile?props.user.profile.college_name:'KLU':'KLU'} />
                   <br></br>
-                  <div className="row">
-                    <div className="col-sm-2" style={{width: '200px'}}>
-                      <a
-                        className="btn btn-info "
-                        target="__blank"
-                        href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills"
-                      >
-                        Edit
-                      </a>
-                    </div>
+                  <DetailsObject heading="Gender" value={props.user?props.user.profile?props.user.profile.gender:'FEMALE':'FEMALE'} />
+                  <br></br>
+                  <DetailsObject heading="Payment Status" value={props.user?props.user.payment? props.user.payment.payment_status.toString():'false':'false'} />
+                  <br></br>
+                  <div className="row">{}
+                    
+                    <EditProfile>
+                      <ProfileButton>EDIT PROFILE</ProfileButton>
+                    </EditProfile>
                   </div>
                 </div>
               </div>
