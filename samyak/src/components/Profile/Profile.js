@@ -1,16 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axiosInstance from "../../axios";
 import { useSnackbar } from "notistack";
 import NavBarSpace from '../BaseComponents/NavBarSpace';
+import UserProfile from "./UserProfile";
 
 const Profile = (props) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  //const [user, setUser] = useState(null);
-  const user = null;
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
-    if (user !== null) return;
     let storage = JSON.parse(localStorage.getItem("user"));
     if (props.isAuth) {
       axiosInstance
@@ -20,11 +19,9 @@ const Profile = (props) => {
           },
         })
         .then((response) => {
-          // setUser(response.data);
-          console.log(response.data);
+          setUser(response.data);
         })
         .catch((error) => {
-          // console.log(error);
           props.setIsAuth(false);
         });
     } else {
@@ -36,7 +33,7 @@ const Profile = (props) => {
         },
       });
     }
-  }, [enqueueSnackbar, props.isAuth, props, user]);
+  }, [enqueueSnackbar, props]);
 
   if (!props.isAuth) {
     return (
@@ -78,19 +75,17 @@ const Profile = (props) => {
     }
   };
   return (
-    <div>
-      <h1>Profile</h1>
+    <div style={{backgroundColor: '#ccc'}}>
+      <br></br>
+      <UserProfile user={user}/>
       <ul>
-        {user &&
-          user.map((user) => {
-            return (
-              <li key={user.id}>
-                {user.username} {user.email}
-              </li>
-            );
-          })}
+        {user.length > 0 ? user.map((item) => (
+          <li key={item.id}>
+            {item.username} {item.email}
+          </li>
+        )) : null }
       </ul>
-      <NavBarSpace />
+      <NavBarSpace user={user}/>
       <button onClick={handlePayment}>
       <a
         // href="https://www.instamojo.com/@klusamyak/la0747a9640ac4948819986013fe771e9"

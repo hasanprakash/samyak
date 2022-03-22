@@ -47,7 +47,10 @@ const LoginForm = (props) => {
                   ]
                 } 
                 console.log(userobj);
-                if(localStorage.getItem('user'))
+                if( localStorage.getItem('user')!== null && 
+                    localStorage.getItem('user') !== undefined && 
+                    localStorage.getItem('user') !== '' && 
+                    localStorage.getItem('user') !== 'null') 
                   flash("Session Updated!!", "success");
                 else
                   flash("Login Successful", "success");
