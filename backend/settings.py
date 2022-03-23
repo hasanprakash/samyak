@@ -149,9 +149,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'samyak',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'USER': 'samyak',
+        'PASSWORD': 'Hasan@123',
+        'HOST': 'samyaktesting.azurewebsites.net',
         'PORT': '3306'
     }
 }
