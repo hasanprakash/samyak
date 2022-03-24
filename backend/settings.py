@@ -162,7 +162,7 @@ DATABASES = {
         'NAME': 'samyak',
         'USER': 'samyak',
         'PASSWORD': 'Hasan@123',
-        'HOST': 'samyak2022.mysql.database.azure.com',
+        'HOST': 'klsamyak.mysql.database.azure.com',
         'PORT': '3306'
     }
 }
