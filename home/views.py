@@ -118,7 +118,7 @@ class PaymentView(APIView):
                 buyer_name=username,
                 email=email,
                 phone=phone,
-                redirect_url='http://localhost:8000/home/paymentsuccess'
+                redirect_url='https://klsamyak.azurewebsites.net/home/paymentsuccess'
             )
             print(response)
             payment_obj.receipt_id = response['payment_request']['id']
@@ -141,6 +141,7 @@ class PaymentSuccessView(APIView):
             id=payment_request_id,
             payment_id=payment_id,
         )
+        # print(payment_request_id, payment_id)
         print(response)
         username = response['payment_request']['buyer_name']   # username
         stats = response['payment_request']['payment']['status']
@@ -154,7 +155,7 @@ class PaymentSuccessView(APIView):
             p.is_paid = True
             p.save()
             # return Response({"status" : True})
-            return HttpResponseRedirect("http://localhost:3000/profile")
+            return HttpResponseRedirect("http://klsamyak.in/profile")
         else:
             return Response({"status" : 'FAILED'})
     
