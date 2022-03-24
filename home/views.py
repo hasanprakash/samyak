@@ -30,7 +30,7 @@ def home(request):
     return HttpResponse("<h1>Samyak Project</h1>")
 
 def test(request):
-    return HttpResponse("<h1>Samyak Project</h1>")
+    return HttpResponse("<h1>Samyak Project Testing Page</h1>")
 
 class UsersViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializers
