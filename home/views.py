@@ -102,6 +102,7 @@ class PaymentView(APIView):
         print("CONFIGURING PAYMENTS")
         username = request.data['username']
         email = request.data['email']
+        phone = request.data['phone']
         user = User.objects.get(username=username)
         print(user)
         #phone = request.data.phone
@@ -112,11 +113,11 @@ class PaymentView(APIView):
         # #uname = request.user
         try:
             response = api.payment_request_create(
-                amount=300,
+                amount=200,
                 purpose='Samyak Registration Fee',
                 buyer_name=username,
                 email=email,
-                phone=8885384444,
+                phone=phone,
                 redirect_url='http://localhost:8000/home/paymentsuccess'
             )
             print(response)

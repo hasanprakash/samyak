@@ -19,7 +19,6 @@ const LoginForm = (props) => {
         password: data.password,
       })
       .then((response) => {
-          // console.log(response.data);
           if(response.status === 200) {
             axiosInstance
               .get("user/", {
@@ -28,6 +27,7 @@ const LoginForm = (props) => {
                 }
               })
               .then((res) => {
+                // console.log(res);
                 let userobj = {
                   user: [
                     {
@@ -41,12 +41,13 @@ const LoginForm = (props) => {
                         user_id: res.data.id,
                         username: res.data.username,
                         user_email: res.data.email,
+                        user_phone: res.data.profile.phone,
                         isAuth: true
                       }
                     }
                   ]
                 } 
-                console.log(userobj);
+                // console.log(userobj);
                 if( localStorage.getItem('user')!== null && 
                     localStorage.getItem('user') !== undefined && 
                     localStorage.getItem('user') !== '' && 
