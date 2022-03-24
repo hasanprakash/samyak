@@ -31,10 +31,8 @@ const Profile = (props) => {
           },
         })
         .then((response) => {
-          console.log(response.data);
-          if(response.data.payment.payment_status) {
+          if(response.data.payment ? response.data.payment.payment_status : false) {
             flash("Payment Successful", "success")  
-            console.log("Payment Successful");
           }
           else {
             flash("You have not made payment yet", "warning")

@@ -44,7 +44,7 @@ const UserProfile = (props) => {
                         {props.user?props.user.first_name+' '+props.user.last_name:''}
                       </p>
                       <ProfileButton>Change Password</ProfileButton>
-                      {paidStatus?
+                      {paidStatus === "true" ?
                         <ProfileButton>PAID</ProfileButton> :
                       <ProfileButton onClick={props.handlePayment}>
                         <a
