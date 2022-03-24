@@ -6,7 +6,7 @@ class Validations {
     }
     async serverValidations(data) {
         await axiosInstance
-            .post("http://localhost:8000/api/users/", data)
+            .post("users/", data)
             .then((res) => {
                 if(!res.data.status) {
                     this.flash(res.data.message, 'error');
