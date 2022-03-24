@@ -38,7 +38,8 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',
     'https://white-ocean-0477b4500.1.azurestaticapps.net',
-    'https://samyaktesting.azurewebsites.net'
+    'https://samyaktesting.azurewebsites.net',
+    'https://klsamyak.azurewebsites.net'
 ]
 
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'https://samyaktesting.azurewebsites.net']
