@@ -1,4 +1,5 @@
 from dataclasses import fields
+import profile
 from pyexpat import model
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -21,11 +22,13 @@ from django.conf import settings
 from rest_framework.views import APIView
 
 api = Instamojo(api_key=settings.API_KEY, auth_token=settings.AUTH_TOKEN)
-
 # Create your views here.
 
 def home(request):
     return HttpResponse("<h1>Samyak Project</h1>")
+
+def test(request):
+    return HttpResponse("<h1>Samyak Project Testing Page</h1>")
 
 class UsersViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializers
@@ -58,17 +61,21 @@ class EventsViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializers
     queryset = Event.objects.all()
 
+
+class PaymentTempSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
+        fields = '__all__'
 class ProfileTempSerializers(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['phone']
-
+        fields = ['phone','branch','year_of_study','gender','college_name']
 class UserTempSerializer(serializers.ModelSerializer):
     profile = ProfileTempSerializers()
+    payment = PaymentTempSerializers()
     class Meta:
         model = User
-        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'profile']
-
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'profile', 'payment']
 class UserAPIView(RetrieveAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = UserTempSerializer
@@ -146,7 +153,7 @@ class PaymentSuccessView(APIView):
             p.is_paid = True
             p.save()
             # return Response({"status" : True})
-            return HttpResponseRedirect("http://localhost:3000/")
+            return HttpResponseRedirect("http://localhost:3000/profile")
         else:
             return Response({"status" : 'FAILED'})
     

@@ -1,16 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axiosInstance from "../../axios";
 import { useSnackbar } from "notistack";
 import NavBarSpace from '../BaseComponents/NavBarSpace';
+import UserProfile from "./UserProfile";
 
 const Profile = (props) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  //const [user, setUser] = useState(null);
-  const user = null;
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
-    if (user !== null) return;
+
+    const flash = (message, variant) => {
+      enqueueSnackbar(message, {
+        variant: variant,
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "left",
+        },
+        // autoHideDuration: duration,
+      });
+    };
+
     let storage = JSON.parse(localStorage.getItem("user"));
     if (props.isAuth) {
       axiosInstance
@@ -20,23 +31,25 @@ const Profile = (props) => {
           },
         })
         .then((response) => {
-          // setUser(response.data);
           console.log(response.data);
+          if(response.data.payment.payment_status) {
+            flash("Payment Successful", "success")  
+            console.log("Payment Successful");
+          }
+          else {
+            flash("You have not made payment yet", "warning")
+            console.log("You have not made payment yet");
+          }
+          setUser(response.data);
         })
         .catch((error) => {
-          // console.log(error);
           props.setIsAuth(false);
         });
     } else {
-      enqueueSnackbar("Session Expired or You Haven't LoggedIN yet!", {
-        variant: "error",
-        anchorOrigin: {
-          vertical: "top",
-          horizontal: "right",
-        },
-      });
+      flash("Session Expired or You Haven't LoggedIn yet!", "error");
+      console.log("Session Expired or You Haven't LoggedIn yet!");
     }
-  }, [enqueueSnackbar, props.isAuth, props, user]);
+  }, [enqueueSnackbar, props]);
 
   if (!props.isAuth) {
     return (
@@ -78,17 +91,15 @@ const Profile = (props) => {
     }
   };
   return (
-    <div>
-      <h1>Profile</h1>
+    <div style={{backgroundColor: '#ccc'}}>
+      <br></br>
+      <UserProfile user={user} handlePayment={handlePayment}/>
       <ul>
-        {user &&
-          user.map((user) => {
-            return (
-              <li key={user.id}>
-                {user.username} {user.email}
-              </li>
-            );
-          })}
+        {user.length > 0 ? user.map((item) => (
+          <li key={item.id}>
+            {item.username} {item.email}
+          </li>
+        )) : null }
       </ul>
       <NavBarSpace />
       <button onClick={handlePayment}>
@@ -101,6 +112,7 @@ const Profile = (props) => {
         data-css-style="color:#ffffff; background:#5300eb; width:180px; border-radius:30px"
         data-layout="vertical"
       >Paynow</a></button>
+//       <NavBarSpace user={user}/>
     </div>
   );
 };

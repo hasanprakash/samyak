@@ -37,7 +37,14 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
+    'https://white-ocean-0477b4500.1.azurestaticapps.net',
+    'https://samyaktesting.azurewebsites.net',
+    'https://klsamyak.azurewebsites.net',
+    'icy-hill-0dc571800.1.azurestaticapps.net',
 ]
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'https://samyaktesting.azurewebsites.net', 'https://klsamyak.azurewebsites.net', 'https://klsamyak2022.azurewebsites.net']
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -140,13 +147,23 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'samyak',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',
+#         'PORT': '3306'
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'samyak',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'USER': 'samyak',
+        'PASSWORD': 'Hasan@123',
+        'HOST': 'klsamyak.mysql.database.azure.com',
         'PORT': '3306'
     }
 }

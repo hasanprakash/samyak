@@ -31,7 +31,7 @@ const NavBar = (props) => {
       <nav>
         <div className="logo">
           <Link to="/">
-            High<em>way</em>
+            SAMYAK
           </Link>
         </div>
         <div className="menu-icon">

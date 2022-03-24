@@ -1,11 +1,11 @@
-import axios from "axios";
+import axiosInstance from "../axios";
 
 class Validations {
     constructor(flash) {
         this.flash = flash;
     }
     async serverValidations(data) {
-        await axios
+        await axiosInstance
             .post("http://localhost:8000/api/users/", data)
             .then((res) => {
                 if(!res.data.status) {
