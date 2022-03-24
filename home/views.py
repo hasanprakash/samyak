@@ -29,6 +29,9 @@ api = Instamojo(api_key=settings.API_KEY, auth_token=settings.AUTH_TOKEN, endpoi
 def home(request):
     return HttpResponse("<h1>Samyak Project</h1>")
 
+def test(request):
+    return HttpResponse("<h1>Samyak Project</h1>")
+
 class UsersViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializers
     queryset = User.objects.all()   
