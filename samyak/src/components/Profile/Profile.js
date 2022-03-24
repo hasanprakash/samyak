@@ -101,7 +101,18 @@ const Profile = (props) => {
           </li>
         )) : null }
       </ul>
-      <NavBarSpace user={user}/>
+      <NavBarSpace />
+      <button onClick={handlePayment}>
+      <a
+        href="https://www.instamojo.com/@klusamyak/la0747a9640ac4948819986013fe771e9"
+        //href="https://test.instamojo.com/api/1.1/"
+        //href="https://test.instamojo.com/@mchaitanyanathsingh/"
+        rel="im-checkout"
+        data-text="Pay"
+        data-css-style="color:#ffffff; background:#5300eb; width:180px; border-radius:30px"
+        data-layout="vertical"
+      >Paynow</a></button>
+//       <NavBarSpace user={user}/>
     </div>
   );
 };
