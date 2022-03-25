@@ -5,8 +5,17 @@ import "./NavBar.css";
 
 import styled from "styled-components";
 
+import logoImg from "./SAMYAK_FaceLogo_white.png";
+
 const Logout = styled.a`
   cursor: pointer;
+`;
+
+const Logo = styled.img`
+  width: 50px;
+  height: 60px;
+  margin-top: -1px;
+  margin-left: -5px;
 `;
 
 const NavBar = (props) => {
@@ -19,27 +28,29 @@ const NavBar = (props) => {
       variant: "success",
       anchorOrigin: {
         vertical: "top",
-        horizontal: "right",
+        horizontal: "left",
       },
     });
     props.setIsAuth(false);
-    navigate.push("/join");
+    navigate("/join");
   };
   return (
     <div className="App__navbar">
       <nav>
         <div className="logo">
-          <Link to="/">SAMYAK</Link>
+          <Link to="/">
+            <Logo src={logoImg} alt="SAMYAK" />
+          </Link>
         </div>
         <div className="menu-icon">
           <span></span>
         </div>
       </nav>
       <section className="overlay-menu">
-        <div className="container">
+        <div className="container" >
           <div className="row" style={{ display: "block" }}>
             <div className="main-menu">
-              <ul>
+              <ul style={{ marginTop: '30px'}}>
                 <li className="nav-element">
                   <Link to={`/home`}>HOME</Link>
                 </li>

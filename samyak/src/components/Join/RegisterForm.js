@@ -18,6 +18,8 @@ const RegisterForm = (props) => {
 
   const registerFormHandler = (event) => {
     event.preventDefault();
+    let register = document.getElementById("register");
+    register.disabled = true;
     let data = {}
     data.username = event.target.username.value.trim();
     data.first_name = event.target.first_name.value.trim();
@@ -78,7 +80,7 @@ const RegisterForm = (props) => {
           <BaseDropDown name="branch" options={departmentData} />
         </div>
         <div className="form-group">
-          <BaseButton>Sign Up</BaseButton>
+          <BaseButton id="register">Sign Up</BaseButton>
         </div>
         <div className="form-group d-md-flex">
           <div className="w-50">

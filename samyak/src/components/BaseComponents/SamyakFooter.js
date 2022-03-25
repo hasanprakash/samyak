@@ -258,9 +258,6 @@ const SamyakNavBar = () => {
               <li>
                 <Link to={`/team`}>Team</Link>
               </li>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
             </QuickLinksUL>
           </QuickLinks>
 
@@ -291,11 +288,6 @@ const SamyakNavBar = () => {
               </li>
               <li style={{ margin: "5px 0px" }}>
                 <SocialLIA href="#">
-                  <i className="fab fa-instagram fa" id="SocialIcon"></i>
-                </SocialLIA>
-              </li>
-              <li style={{ margin: "5px 0px" }}>
-                <SocialLIA href="">
                   <i className="fab fa-instagram fa" id="SocialIcon"></i>
                 </SocialLIA>
               </li>

@@ -16,9 +16,10 @@ const StallContainer = styled.div`
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background: url(../img/decor_events.png) no-repeat center;
+  
   background-size: contain;
 `;
+// background: url(../img/decor_events.png) no-repeat center;
 
 const LanternDecorator = styled.img`
   position: absolute;

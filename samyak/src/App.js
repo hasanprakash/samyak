@@ -27,7 +27,6 @@ import Team from './components/Team/Team';
 import Join from './components/Join/Join';
 import Profile from './components/Profile/Profile';
 import Admin from './components/Admin/Admin';
-import Login from './components/Login/Login';
 
 function App() {
 
@@ -36,7 +35,7 @@ function App() {
   const [isAuth, setIsAuthenticate] = useState(isAuthenticated);
 
   const setIsAuth = (status) => {
-    console.log("changing auth status to: ", status); 
+    // console.log("changing auth status to: ", status); 
     setIsAuthenticate(status);
     storage = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
     if(storage) 
@@ -78,7 +77,6 @@ function App() {
           <Route exact path="/oursponsors" element={<OurSponsors />} />
           <Route exact path="/team" element={<Team />} />
           <Route exact path="/join" element={<Join setIsAuth={setIsAuth}/>} />
-          <Route exact path="/login" element={<Login setIsAuth={setIsAuth}/>} />
           <Route exact path="/profile" element={<Profile isAuth={isAuth} status="false" setIsAuth={setIsAuth}/>} />
           { /** router for /profile?paymentstatus=success */ }
           <Route exact path="/admin" element={<Admin />} />

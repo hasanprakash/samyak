@@ -15,6 +15,7 @@ const LoginForm = (props) => {
   const { enqueueSnackbar } = useSnackbar();
   const formHandler = (event) => {
     event.preventDefault();
+    document.getElementById("login").disabled = true;
     let data = {};
     data.username = event.target.username.value.trim();
     data.password = event.target.password.value.trim();
@@ -75,6 +76,7 @@ const LoginForm = (props) => {
       )
       .catch((e) => {
         // console.log(e);
+        document.getElementById("login").disabled = false;
         enqueueSnackbar("Invalid Username or Password", {
           variant: "error",
         });
@@ -109,7 +111,7 @@ const LoginForm = (props) => {
         ></span>
       </div>
       <div className="form-group">
-        <BaseButton>Sign In</BaseButton>
+        <BaseButton id="login">Sign In</BaseButton>
       </div>
       <div className="form-group d-md-flex">
         <div className="w-50">

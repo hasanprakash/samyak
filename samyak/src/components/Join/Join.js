@@ -73,13 +73,10 @@ const Join = (props) => {
             <div className="col-md-6 col-lg-4">
               <div className="login-wrap p-0">
                 <DisplayForm toBeDisplayed={toBeDisplayed} setIsAuth={props.setIsAuth}/>
-                <p className="w-100 text-center">
-                  &mdash; Or Sign In With &mdash;
-                </p>
                 <div className="social d-flex text-center">
-                  <a href="#0" className="px-2 py-2 mr-md-1 rounded">
+                  {/* <a href="#0" className="px-2 py-2 mr-md-1 rounded">
                     <span className="ion-logo-facebook mr-2"></span> Facebook
-                  </a>
+                  </a> */}
                   <a
                     href="#0"
                     onClick={toggleForm}

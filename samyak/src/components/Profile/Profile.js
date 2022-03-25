@@ -4,6 +4,8 @@ import { useSnackbar } from "notistack";
 import NavBarSpace from '../BaseComponents/NavBarSpace';
 import UserProfile from "./UserProfile";
 
+import HomePoster from "../Home/HomePoster";
+
 const Profile = (props) => {
   const { enqueueSnackbar } = useSnackbar();
 
@@ -52,7 +54,7 @@ const Profile = (props) => {
   if (!props.isAuth) {
     return (
       <div>
-        <h1>User Not Logged IN</h1>
+          <HomePoster />
       </div>
     );
   }

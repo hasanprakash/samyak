@@ -1,8 +1,9 @@
+import HomePoster from "../Home/HomePoster";
 
 const AboutUs = () => {
     return (
         <div className="aboutus__container">
-            <h1>About Us</h1>
+            <HomePoster />
         </div>
     )
 }

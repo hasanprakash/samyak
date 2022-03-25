@@ -61,7 +61,7 @@ const UserProfile = (props) => {
               </div>
               <div className="card mt-3">
                 <ul className="list-group list-group-flush">
-                  <EventRecord>EVENT NAME</EventRecord>
+                  <EventRecord>EVENT NAMES</EventRecord>
                   <EventRecord>-</EventRecord>
                 </ul>
               </div>
