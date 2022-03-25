@@ -40,10 +40,11 @@ CORS_ORIGIN_WHITELIST = [
     'https://white-ocean-0477b4500.1.azurestaticapps.net',
     'https://samyaktesting.azurewebsites.net',
     'https://klsamyak.azurewebsites.net',
-    'icy-hill-0dc571800.1.azurestaticapps.net',
+    'https://icy-hill-0dc571800.1.azurestaticapps.net',
+    'http://64.227.129.105'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'https://samyaktesting.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'https://samyaktesting.azurewebsites.net', 'https://icy-hill-0dc571800.1.azurestaticapps.net', 'http://64.227.129.105']
 
 
 REST_FRAMEWORK = {
@@ -114,8 +115,6 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
-
 ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
@@ -147,26 +146,26 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'samyak',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
-#         'HOST': 'localhost',
-#         'PORT': '3306'
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'samyak',
-        'USER': 'samyak',
-        'PASSWORD': 'Hasan@123',
-        'HOST': 'klsamyak.mysql.database.azure.com',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
         'PORT': '3306'
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'samyak',
+#         'USER': 'samyak',
+#         'PASSWORD': 'Hasan@123',
+#         'HOST': 'klsamyak.mysql.database.azure.com',
+#         'PORT': '3306'
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import axiosInstance from "../../axios";
 import BaseButton from "../UI/BaseButton";
 import BaseInput from "../UI/BaseInput";
@@ -5,6 +7,9 @@ import BaseInput from "../UI/BaseInput";
 import { useSnackbar } from 'notistack';
 
 const LoginForm = (props) => {
+
+  const navigate = useNavigate();
+
   // let storage = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
   // const access_token = storage ? storage.user[0].tokens.access_token : null;
   const { enqueueSnackbar } = useSnackbar();
@@ -56,6 +61,8 @@ const LoginForm = (props) => {
                 else
                   flash("Login Successful", "success");
                 
+                navigate('/');
+
                 localStorage.removeItem('user');
                 localStorage.setItem('user', JSON.stringify(userobj));
                 props.setIsAuth(true);

@@ -15,7 +15,8 @@ import './components/Bootstrap/css/join_style.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import NavBar from './components/BaseComponents/NavBar';
-import Footer from './components/BaseComponents/Footer';
+// import Footer from './components/BaseComponents/Footer';
+import SamyakFooter from './components/BaseComponents/SamyakFooter';
 
 import Home from './components/Home/Home';
 import AboutUs from './components/AboutUs/AboutUs';
@@ -26,6 +27,7 @@ import Team from './components/Team/Team';
 import Join from './components/Join/Join';
 import Profile from './components/Profile/Profile';
 import Admin from './components/Admin/Admin';
+import Login from './components/Login/Login';
 
 function App() {
 
@@ -69,17 +71,19 @@ function App() {
         <NavBar isAuth={isAuth} setIsAuth={setIsAuth}/>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route exact path="/aboutus" element={<AboutUs />} />
           <Route exact path="/events" element={<Events />} />
           <Route exact path="/gallery" element={<Gallery />} />
           <Route exact path="/oursponsors" element={<OurSponsors />} />
           <Route exact path="/team" element={<Team />} />
           <Route exact path="/join" element={<Join setIsAuth={setIsAuth}/>} />
+          <Route exact path="/login" element={<Login setIsAuth={setIsAuth}/>} />
           <Route exact path="/profile" element={<Profile isAuth={isAuth} status="false" setIsAuth={setIsAuth}/>} />
           { /** router for /profile?paymentstatus=success */ }
           <Route exact path="/admin" element={<Admin />} />
         </Routes>
-        <Footer />
+        <SamyakFooter />
       </Router>
     </>
   );
