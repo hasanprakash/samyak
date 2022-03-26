@@ -139,7 +139,7 @@ const FooterLogo = styled.div`
   -ms-flex-pack: justify;
   justify-content: space-between;
   width: 25%;
-  height: 100%;
+  height: 70%;
 `;
 
 const FooterLogoImg = styled.img`
@@ -174,6 +174,7 @@ const ContactUsLIA = styled.a`
   font-size: 18px;
   font-weight: 500;
 `;
+
 
 const SocialUL = styled.ul`
   height: 50%;
@@ -293,9 +294,10 @@ const SamyakNavBar = () => {
               </li>
             </SocialUL>
           </div>
+
         </Links>
         <CopyRight className="copyright">
-          <CopyRightP>@Copyrights reserved Samyak2022</CopyRightP>
+          <CopyRightP>&#169; Copyrights Reserved Samyak_2022</CopyRightP>
         </CopyRight>
       </FooterContainer>
     </Footer>
