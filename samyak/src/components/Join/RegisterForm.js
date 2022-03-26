@@ -9,7 +9,7 @@ import { useSnackbar } from 'notistack';
 import Validations from "../../Utils/Validations";
 
 const RegisterForm = (props) => {
-  let genderData = ['Gender', 'Male', 'Female', 'Others']
+  let genderData = ['Select Gender', 'Male', 'Female', 'Others']
   let yearData = ['Select Year', '1st', '2nd', '3rd', '4th', 'Faculty', 'Alumni', 'Others']
   let departmentData = ['Select Department', 'CSE', 'ECE', 'EEE', 'ME', 'ECM', 'BCA', 'CE', 'IT', 'CHE', 'MECH', 'CIVIL', 'LAW', 'BBA', 'MBA', 'CSIT', 'BT', 'AI&DS', 'HOTEL MANG', 'FINANCE', 'ARCH.T', 'Others']
   let collegeData = ['Select College', 'KL Vijayawada', 'KL Hyderabad', 'Others']
@@ -39,6 +39,19 @@ const RegisterForm = (props) => {
     }
   }
 
+  const [enterCollegeName, setEnterCollegeName] = React.useState(null);
+
+  const collegeChangeHandler = (event) => {
+    let enteredValue = event.target.value;
+    if(enteredValue === 'Others') {
+      // document.getElementById('otherCollege').style.display = 'block';
+      setEnterCollegeName(<BaseInput type="text" name="otherCollege" placeholder="Enter College Name" />)
+    } else {
+      // document.getElementById('otherCollege').style.display = 'none';
+      setEnterCollegeName(null);
+    }
+  }
+
   const flash = (message, messageVariant) => {
     enqueueSnackbar(message, { variant: messageVariant, autoHideDuration: 3000 });
   };
@@ -46,7 +59,7 @@ const RegisterForm = (props) => {
     <div>
       <form className="signin-form" onSubmit={registerFormHandler}>
         <div className="form-group">
-          <BaseInput name="username" type="text" placeholder="Username" />
+          <BaseInput name="username" type="text" placeholder="College ID" />
         </div>
         <div className="form-group">
           <BaseInput name="first_name" type="text" placeholder="First Name" />
@@ -68,7 +81,10 @@ const RegisterForm = (props) => {
           <BaseDropDown name="year" options={yearData} />
         </div>
         <div className="form-group">
-          <BaseDropDown name="college" options={collegeData} />
+          <BaseDropDown onChange={collegeChangeHandler} name="college" options={collegeData} />
+        </div>
+        <div className="form-group">
+          {enterCollegeName}
         </div>
         <div className="form-group">
           <BaseInput name="phoneno" type="text" placeholder="Phone Number (without country code)" />
