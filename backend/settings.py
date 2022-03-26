@@ -44,7 +44,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://64.227.129.105'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'https://samyaktesting.azurewebsites.net', 'https://icy-hill-0dc571800.1.azurestaticapps.net', 'http://64.227.129.105']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'https://samyaktesting.azurewebsites.net', 'https://icy-hill-0dc571800.1.azurestaticapps.net', 'http://64.227.129.105', 'https://klsamyak.azurewebsites.net']
 
 
 REST_FRAMEWORK = {
