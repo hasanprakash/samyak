@@ -11,9 +11,9 @@ import Validations from "../../Utils/Validations";
 const RegisterForm = (props) => {
   let genderData = ['Gender', 'Male', 'Female', 'Others']
   let yearData = ['Select Year', '1st', '2nd', '3rd', '4th', 'Faculty', 'Alumni', 'Others']
-  let departmentData = ['Select Department', 'CSE', 'ECE', 'EEE', 'ME', 'ECM', 'BCA', 'CE', 'IT', 'CHE', 'MECH', 'CIVIL', 'LAW', 'BBA', 'MBA', 'CSIT', 'BT', 'AI&DS', 'HOTEL MANG', 'FINANCE', 'ARCH.T', 'Others']
+  let departmentData = ['Select Department', 'FED', 'CSE', 'CS&IT', 'AI&DS', 'ECE', 'EEE', 'ECM', 'ME', 'CE', 'BT', 'BCA', 'BBA', 'MBA', 'B.COM', 'M.COM', 'BA-IAS', 'LLB', 'BFA', 'MCA', 'BCA', 'B.SC.VC','ARCHITECTURE', 'BHM', 'AGRICULTURE', 'B.PHARM', 'M.PHARM', 'PHARMA D', 'Others']
   let collegeData = ['Select College', 'KL Vijayawada', 'KL Hyderabad', 'Others']
-
+  
   const { enqueueSnackbar } = useSnackbar();
 
   const registerFormHandler = (event) => {
@@ -62,13 +62,7 @@ const RegisterForm = (props) => {
           ></span> */}
         </div>
         <div className="form-group">
-          <BaseInput name="email" type="email" placeholder="Email" />
-        </div>
-        <div className="form-group">
-          <BaseDropDown name="year" options={yearData} />
-        </div>
-        <div className="form-group">
-          <BaseDropDown name="college" options={collegeData} />
+          <BaseInput name="email" type="email" placeholder="Email (Use Personal Gmail)" />
         </div>
         <div className="form-group">
           <BaseInput name="phoneno" type="text" placeholder="Phone Number (without country code)" />
@@ -77,7 +71,13 @@ const RegisterForm = (props) => {
           <BaseDropDown name="gender" options={genderData} />
         </div>
         <div className="form-group">
+          <BaseDropDown name="college" options={collegeData} />
+        </div>
+        <div className="form-group">
           <BaseDropDown name="branch" options={departmentData} />
+        </div>
+        <div className="form-group">
+          <BaseDropDown name="year" options={yearData} />
         </div>
         <div className="form-group">
           <BaseButton id="register">Sign Up</BaseButton>
