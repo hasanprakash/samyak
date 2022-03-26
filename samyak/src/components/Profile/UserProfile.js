@@ -36,7 +36,8 @@ const UserProfile = (props) => {
                       src={samyakLogo}
                       alt="Admin"
                       className="rounded-circle"
-                      width="150"
+                      width="200"
+                      height="200"
                       style={{backgroundColor: '#f5f5f5'}}
                     />
                     <div className="mt-3">
@@ -52,7 +53,7 @@ const UserProfile = (props) => {
                           style={{color: '#007bff'}}
                           href="#0"
                         >
-                          Paynow
+                          Pay now
                         </a>
                       </ProfileButton>}
                     </div>
@@ -69,13 +70,12 @@ const UserProfile = (props) => {
             <div className="col-md-8">
               <div className="card mb-3">
                 <div className="card-body">
+                  <br></br>
                   <DetailsObject
                     heading="Name"
                     value={props.user.first_name?(props.user.first_name +' '+ props.user.last_name):''}
                   />
-                  <br></br>
                   <DetailsObject heading="Email" value={props.user?props.user.email:'samyak@gmail.com'} />
-                  <br></br>
                   <DetailsObject
                     heading="Phone"
                     value={
@@ -85,23 +85,15 @@ const UserProfile = (props) => {
                         : "9876543210")
                     }
                   />
-                  <br></br>
                   <DetailsObject heading={"Branch"} value={ props.user?props.user.profile?props.user.profile.branch:'RRR':'RRR' } />
-                  <br></br>
                   <DetailsObject heading="Year" value={ props.user?props.user.profile?props.user.profile.year_of_study:'3rd':'3rd' } />
-                  <br></br>
                   <DetailsObject heading="Username"
                     value={props.user.username}
                   />
-                  <br></br>
                   <DetailsObject heading="College" value={props.user?props.user.profile?props.user.profile.college_name:'KLU':'KLU'} />
-                  <br></br>
                   <DetailsObject heading="Gender" value={props.user?props.user.profile?props.user.profile.gender:'FEMALE':'FEMALE'} />
-                  <br></br>
                   <DetailsObject heading="Payment Status" value={props.user?props.user.payment? props.user.payment.payment_status.toString():'false':'false'} />
-                  <br></br>
-                  <div className="row">{}
-                    
+                  <div className="row">{}    
                     <EditProfile>
                       <ProfileButton>EDIT PROFILE</ProfileButton>
                     </EditProfile>

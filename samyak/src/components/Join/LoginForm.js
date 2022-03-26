@@ -61,7 +61,6 @@ const LoginForm = (props) => {
                   flash("Session Updated!!", "success");
                 else
                   flash("Login Successful", "success");
-                
                 navigate('/');
 
                 localStorage.removeItem('user');
@@ -70,6 +69,8 @@ const LoginForm = (props) => {
               })
               .catch((error) => {
                 console.log(error);
+                document.getElementById("login").disabled = false;
+                flash("Login Failed", "error");
               });
           }
         }
@@ -77,7 +78,7 @@ const LoginForm = (props) => {
       .catch((e) => {
         // console.log(e);
         document.getElementById("login").disabled = false;
-        enqueueSnackbar("Invalid Username or Password", {
+        enqueueSnackbar("Login Failed!!", {
           variant: "error",
         });
       });

@@ -5,6 +5,7 @@ import "./NavBar.css";
 
 import styled from "styled-components";
 
+import kl_logo from "./KL_University_logo.png";
 import logoImg from "./SAMYAK_FaceLogo_white.png";
 
 const Logout = styled.a`
@@ -12,8 +13,8 @@ const Logout = styled.a`
 `;
 
 const Logo = styled.img`
-  width: 50px;
-  height: 60px;
+  width: 45px;
+  height: 50px;
   margin-top: -1px;
   margin-left:10px;
 `;
@@ -52,10 +53,10 @@ const NavBar = (props) => {
         </div>
       </nav>
       <section className="overlay-menu">
-        <div className="container" >
+        <div className="container">
           <div className="row" style={{ display: "block" }}>
             <div className="main-menu">
-              <ul style={{ marginTop: '30px'}}>
+              <ul style={{ marginTop: "30px" }}>
                 <li className="nav-element">
                   <Link to={`/home`}>HOME</Link>
                 </li>
