@@ -156,16 +156,16 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #         'PORT': '3306'
 #     }
 # }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'samyak',
-#         'USER': 'samyak',
-#         'PASSWORD': 'Hasan@123',
-#         'HOST': 'klsamyak.mysql.database.azure.com',
-#         'PORT': '3306'
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'samyak',
+        'USER': 'samyak',
+        'PASSWORD': 'Hasan@123',
+        'HOST': 'klsamyak.mysql.database.azure.com',
+        'PORT': '3306'
+    }
+}
 
 # DATABASES = {
 #     'default': {
@@ -178,16 +178,16 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'defaultdb',
-        'USER': 'doadmin',
-        'PASSWORD': 'v0D6yQ8Z9MFUOMup',
-        'HOST': 'samyak-do-user-11176181-0.b.db.ondigitalocean.com',
-        'PORT': '25060'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'defaultdb',
+#         'USER': 'doadmin',
+#         'PASSWORD': 'v0D6yQ8Z9MFUOMup',
+#         'HOST': 'samyak-do-user-11176181-0.b.db.ondigitalocean.com',
+#         'PORT': '25060'
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
