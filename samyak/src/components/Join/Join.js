@@ -56,10 +56,10 @@ const Join = (props) => {
   // console.log(darkOpacity);
 
   return (
-    <ImageHolder className="img js-fullheight join__container">
+    <ImageHolder className="img js-fullheight join__container"  style={{minHeight:'100vh'}}>
       <ImageDarkner
         className="ftco-section bg-black"
-        style={{ padding: "2em 0" }}
+        style={{ padding: "2em 0",minHeight:'100vh' }}
         bgcolor={`rgba(0,0,0,${darkOpacity})`}
       >
         <NavBarSpace />

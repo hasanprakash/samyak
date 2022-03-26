@@ -15,9 +15,12 @@ const Logo = styled.img`
   width: 50px;
   height: 60px;
   margin-top: -1px;
-  margin-left: -5px;
+  margin-left:10px;
 `;
-
+const KLogo = styled.img`
+margin-left:-5px;
+  width: 100px;
+`;
 const NavBar = (props) => {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
@@ -39,7 +42,9 @@ const NavBar = (props) => {
       <nav>
         <div className="logo">
           <Link to="/">
+            <KLogo src={'https://surabhi.web.app/static/media/kl_logo.5648b3c6.svg'} alt="KL LOGO" onClick={()=>{window.open('https://www.kluniversity.in')}} />
             <Logo src={logoImg} alt="SAMYAK" />
+            
           </Link>
         </div>
         <div className="menu-icon">

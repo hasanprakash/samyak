@@ -146,26 +146,26 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'samyak',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
-#         'HOST': 'localhost',
-#         'PORT': '3306'
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'samyak',
-        'USER': 'samyak',
-        'PASSWORD': 'Hasan@123',
-        'HOST': 'klsamyak.mysql.database.azure.com',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
         'PORT': '3306'
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'samyak',
+#         'USER': 'samyak',
+#         'PASSWORD': 'Hasan@123',
+#         'HOST': 'klsamyak.mysql.database.azure.com',
+#         'PORT': '3306'
+#     }
+# }
 
 # DATABASES = {
 #     'default': {
