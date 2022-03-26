@@ -28,6 +28,9 @@ const RegisterForm = (props) => {
     data.email = event.target.email.value.trim();
     data.year = event.target.year.value.trim();
     data.college = event.target.college.value.trim();
+    if(data.college === 'Others'){
+      data.college = event.target.other_college.value.trim();
+    }
     data.phoneno = event.target.phoneno.value.trim();
     data.gender = event.target.gender.value.trim();
     data.branch = event.target.branch.value.trim();
@@ -45,7 +48,7 @@ const RegisterForm = (props) => {
     let enteredValue = event.target.value;
     if(enteredValue === 'Others') {
       // document.getElementById('otherCollege').style.display = 'block';
-      setEnterCollegeName(<BaseInput type="text" name="otherCollege" placeholder="Enter College Name" />)
+      setEnterCollegeName(<BaseInput type="text" name="other_college" placeholder="Enter College Name" />)
     } else {
       // document.getElementById('otherCollege').style.display = 'none';
       setEnterCollegeName(null);
@@ -78,22 +81,16 @@ const RegisterForm = (props) => {
           <BaseInput name="email" type="email" placeholder="Email (Use Personal Gmail)" />
         </div>
         <div className="form-group">
-          <BaseDropDown name="year" options={yearData} />
-        </div>
-        <div className="form-group">
-          <BaseDropDown onChange={collegeChangeHandler} name="college" options={collegeData} />
-        </div>
-        <div className="form-group">
-          {enterCollegeName}
-        </div>
-        <div className="form-group">
           <BaseInput name="phoneno" type="text" placeholder="Phone Number (without country code)" />
         </div>
         <div className="form-group">
           <BaseDropDown name="gender" options={genderData} />
         </div>
         <div className="form-group">
-          <BaseDropDown name="college" options={collegeData} />
+          <BaseDropDown onChange={collegeChangeHandler} name="college" options={collegeData} />
+        </div>
+        <div className="form-group">
+          {enterCollegeName}
         </div>
         <div className="form-group">
           <BaseDropDown name="branch" options={departmentData} />

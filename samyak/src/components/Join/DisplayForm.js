@@ -4,7 +4,9 @@ import RegisterForm from "./RegisterForm";
 const DisplayForm = (props) => {
     let toBeDisplayed = props.toBeDisplayed;
     if(toBeDisplayed === "LoginForm") 
-        return <LoginForm setIsAuth={props.setIsAuth}/>
+        return (
+        <LoginForm setIsAuth={props.setIsAuth}/>
+        )
     else
         return <RegisterForm />
 }

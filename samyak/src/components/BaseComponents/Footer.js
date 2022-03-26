@@ -25,14 +25,6 @@ const Footer = () => {
               </ul>
             </div>
             <div className="ft-main-item">
-              <h2 className="ft-title">Contact</h2>
-              <ul>
-                <li><a href="#0">Help</a></li>
-                <li><a href="#0">Sales</a></li>
-                <li><a href="#0">Advertise</a></li>
-              </ul>
-            </div>
-            <div className="ft-main-item">
               <h2 className="ft-title">Stay Updated</h2>
               <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg" alt='logo' height="150px" width="150px" />
               <h4>February 20 2022</h4>

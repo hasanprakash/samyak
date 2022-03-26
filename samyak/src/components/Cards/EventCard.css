@@ -1,4 +1,4 @@
-.event {
+.event_page {
   width: 300px;
   height: 400px;
   position: relative;
@@ -53,7 +53,7 @@
   font-size: 14px;
 }
 
-.event:hover .event__content.event__box1 {
+.event_page:hover .event__content.event__box1 {
   -webkit-clip-path: circle(141.4% at 0 100%);
   clip-path: circle(141.4% at 0 100%);
 }
