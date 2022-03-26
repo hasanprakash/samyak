@@ -8,17 +8,19 @@ const H6 = styled.h6`
   font-size: 1.9rem;
   color: black;
   font-weight: bold;
+  margin-left: 60px;
 `;
 
 const DetailsObject = (props) => {
   return (
     <div>
       <div className="row">
-        <div className="col-sm-4">
+        <div className="col-sm-6">
           <H6 className="mb-0">{ props.heading }</H6>
         </div>
-        <Value className="col-sm-7 text-secondary">{ props.value }</Value>
+        <Value className="col-sm-6 text-secondary">{ props.value }</Value>
       </div>
+      <br></br>
     </div>
   );
 };
