@@ -10,7 +10,7 @@ let access_token = storage ? storage.user[0].tokens.access_token : null;
 
 const axiosInstance = axios.create({
 	baseURL: baseURL,
-	timeout: 5000,
+	timeout: 120000,
 	headers: {
 		Authorization: access_token
 			? 'JWT ' + access_token
