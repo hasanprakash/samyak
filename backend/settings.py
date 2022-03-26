@@ -167,14 +167,25 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'bjae2epuwox1vft4fzdy',
+#         'USER': 'urnx9xhecrom1i8f',
+#         'PASSWORD': 'BIMW9oQ2fkIHN0eXpEK0',
+#         'HOST': 'bjae2epuwox1vft4fzdy-mysql.services.clever-cloud.com',
+#         'PORT': '3306'
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bjae2epuwox1vft4fzdy',
-        'USER': 'urnx9xhecrom1i8f',
-        'PASSWORD': 'BIMW9oQ2fkIHN0eXpEK0',
-        'HOST': 'bjae2epuwox1vft4fzdy-mysql.services.clever-cloud.com',
-        'PORT': '3306'
+        'NAME': 'defaultdb',
+        'USER': 'doadmin',
+        'PASSWORD': 'v0D6yQ8Z9MFUOMup',
+        'HOST': 'samyak-do-user-11176181-0.b.db.ondigitalocean.com',
+        'PORT': '25060'
     }
 }
 
