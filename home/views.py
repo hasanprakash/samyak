@@ -35,6 +35,9 @@ class UsersViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()   
     permission_classes = [permissions.AllowAny]
 
+    def list(self, request):
+        return Response({'status': 'NOPEE!'})
+
     def create(self, request, pk=None):
         print(request.data)
         displayData = request.data
@@ -52,9 +55,9 @@ class UsersViewSet(viewsets.ModelViewSet):
             return Response({"status": True, "message": "POST, World!"})
 
 
-class PaymentsViewSet(viewsets.ModelViewSet):  
-    serializer_class = PaymentSerializers
-    queryset = Payment.objects.all()
+# class PaymentsViewSet(viewsets.ModelViewSet):  
+#     serializer_class = PaymentSerializers
+#     queryset = Payment.objects.all()
 
 
 # class EventsViewSet(viewsets.ModelViewSet):
@@ -97,6 +100,7 @@ class PaymentView(APIView):
     def get(self, request):
         print("SUCCESS METHOD")
         print(request)
+        Response({"status": 'UNAUTHORIZED'})
 
     def post(self, request):
         print(request.data)
