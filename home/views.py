@@ -173,7 +173,7 @@ class PaymentSuccessView(APIView):
 class EventsViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializers
     queryset = Event.objects.all()   
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     # def create(self, request, pk=None):
     #     # allEvents = Event.objects.all()
     #     print(request)
