@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-v86z5^fuhccs6nt=#8%v#c2ns8_x1)3l!n2s*)rg0&e1d&7_b#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # 'samyaktesting.azurewebsites.net'
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'klsamyak.in', 'www.klsamyak.in', '64.227.180.177', 'klsamyak.azurewebsites.net', 'backend.gowravchowdary.xyz']

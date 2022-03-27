@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react';
 import styled from "styled-components";
 import EventCard from "../Cards/EventCard";
 
-import axiosInstance, { baseURL } from '../../axios';
+import axiosInstance from '../../axios';
 
 // import sdp2 from './sdp2.jpg';
 // import sdp4 from './sdp4.jpg';
-import axios from 'axios';
 
 const EventContainer = () => {
   const EventWrapper = styled.div`
@@ -37,33 +36,14 @@ const EventContainer = () => {
   `;
 
   const [events, setEvents] = useState([]);
-
   useEffect(() => {
-    console.log(baseURL);
-    axios.get(baseURL + 'events')
-    .then((response) => {
-      console.log(response.data);
-      setEvents(response.data);
-    })
-    .catch((e) => console.log(e));
-  });
+    axiosInstance.get('events/')
+      .then((response) => {
+        setEvents(response.data);
+      })
+      .catch((e) => console.log(e));
+  }, setEvents);
 
-  // const events = [
-  //   {
-  //     eventType: 'Technical',
-  //     heading: "SDP2",
-  //     description:
-  //       "Y20 Relay Learnathon for skill development project-2",
-  //     imgUrl: sdp2,
-  //   },
-  //   {
-  //     eventType: 'Technical',
-  //     heading: "SDP4",
-  //     description:
-  //       "Y20 Relay Learnathon for skill development project-4",
-  //     imgUrl: sdp4
-  //   },
-  // ];
   return (
     <EventWrapper>
       <Events>
