@@ -16,7 +16,7 @@ const StallContainer = styled.div`
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  
+
   background-size: contain;
 `;
 // background: url(../img/decor_events.png) no-repeat center;
@@ -46,9 +46,9 @@ const StallsWrapper = styled.div`
 `;
 
 const StallsWrapperP = styled.p`
-  width: 400px;
-  line-height: 25px;
-  font-size: 16px;
+  width: 480px;
+  line-height: 28px;
+  font-size: 22px;
   font-weight: 400;
 `;
 
@@ -65,9 +65,12 @@ const HomeStalls = () => {
       <LanternDecorator className="lantern-decor" src={lantern} alt="lantern" />
       <StallsWrapper className="stalls-wrapper">
         <StallsWrapperP>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. In et quaerat
-          beatae pariatur quas repellat? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Hic, dolorum!
+          SURABHI 2022 is the national-level cultural fest conducted by KL
+          University, every iteration with the aim of bringing to life an
+          indelible delight that artistic zealots emit with their spell-binding
+          mastery. The entire varsity revels in the brightest shine brought by
+          the indomitable enthusiasm of countless individuals looking for a
+          massive platform to exhibit the invaluable treasure held inside them.
         </StallsWrapperP>
         <StallsWrapperImage src={shop} alt="shop" />
       </StallsWrapper>

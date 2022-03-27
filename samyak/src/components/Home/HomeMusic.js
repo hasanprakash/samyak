@@ -48,9 +48,9 @@ const ConcertContainer = styled.div`
 
 const ConcertContainerP = styled.p`
   color: #fff;
-  width: 400px;
-  line-height: 25px;
-  font-size: 16px;
+  width: 480px;
+  line-height: 28px;
+  font-size: 22px;
 `;
 
 const ConcertContainerImage = styled.img`
@@ -76,14 +76,20 @@ const HomeMusic = () => {
           style={{ bottom: 0, transform: "rotate(180deg)" }}
           alt="back2"
         />
-        <MusicTitle className="music-title Mtitle-1" style={{ marginTop: "80px" }}>
+        <MusicTitle
+          className="music-title Mtitle-1"
+          style={{ marginTop: "80px" }}
+        >
           TUNE IN TO VIBE WITH YOUR FRIENDS
         </MusicTitle>
         <ConcertContainer className="concert-cont">
           <ConcertContainerP>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-            nostrum itaque sapiente sint in perspiciatis! Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Vitae, quia?
+            “Live The Change” is what this epic edition of Samyak would profess
+            as that is the sole way of reaching the zenith of talent and ardour.
+            Taking to the skies from this exhilarating theme, Samyak’ 22 is on
+            the verge of turning into reality a unique vision, that
+            distinguishes its brilliance from the rest and carries it to the
+            crown.
           </ConcertContainerP>
           <ConcertContainerImage src={concertImage} alt="concert" />
         </ConcertContainer>
@@ -91,7 +97,7 @@ const HomeMusic = () => {
           className="music-title Mtitle-2"
           style={{ marginButtom: "80px", width: "550px", zIndex: 2 }}
         >
-          WANNA KNOW WHAT WE GOT FOR ALL THE FOODIES OUT THERE
+          SURABHI 2022
         </MusicTitle>
       </MusicContainer>
     </div>

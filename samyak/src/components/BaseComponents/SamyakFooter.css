@@ -17,6 +17,10 @@
           justify-content: center;
 }
 
+li {
+  list-style: none;
+}
+
 .footer-effect {
   margin-bottom: -40px;
 }
