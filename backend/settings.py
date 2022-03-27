@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-v86z5^fuhccs6nt=#8%v#c2ns8_x1)3l!n2s*)rg0&e1d&7_b#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # 'samyaktesting.azurewebsites.net'
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'klsamyak.in', 'www.klsamyak.in', '64.227.180.177', 'klsamyak.azurewebsites.net', 'backend.gowravchowdary.xyz']
-
-CORS_ORIGIN_ALLOW_ALL = True
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'klsamyak.in', 'www.klsamyak.in', '64.227.180.177', 'klsamyak.azurewebsites.net', 'backend.gowravchowdary.xyz']
+ALLOWED_HOSTS = ['*']
+# CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = [
     'http://google.com',
@@ -45,7 +45,7 @@ CORS_ORIGIN_WHITELIST = [
     'https://backend.gowravchowdary.xyz'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'https://samyaktesting.azurewebsites.net', 'https://icy-hill-0dc571800.1.azurestaticapps.net', 'http://64.227.180.177', 'https://klsamyak.azurewebsites.net', 'https://backend.gowravchowdary.xyz']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://localhost:8000', 'https://samyaktesting.azurewebsites.net', 'https://icy-hill-0dc571800.1.azurestaticapps.net', 'http://64.227.180.177', 'https://klsamyak.azurewebsites.net', 'https://backend.gowravchowdary.xyz']
 
 
 REST_FRAMEWORK = {
@@ -106,6 +106,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

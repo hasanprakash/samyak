@@ -57,9 +57,10 @@ class PaymentsViewSet(viewsets.ModelViewSet):
     queryset = Payment.objects.all()
 
 
-class EventsViewSet(viewsets.ModelViewSet):
-    serializer_class = EventSerializers
-    queryset = Event.objects.all()
+# class EventsViewSet(viewsets.ModelViewSet):
+#     serializer_class = EventSerializers
+#     queryset = Event.objects.all()
+#     permission_classes = [permissions.AllowAny]
 
 
 class PaymentTempSerializers(serializers.ModelSerializer):
@@ -162,3 +163,14 @@ class PaymentSuccessView(APIView):
     def post(self, request):
         print("IN POST ReQUUEST")
         return Response({'status': 'post request'})
+
+
+
+class EventsViewSet(viewsets.ModelViewSet):
+    serializer_class = EventSerializers
+    queryset = Event.objects.all()   
+    permission_classes = [permissions.AllowAny]
+    # def create(self, request, pk=None):
+    #     # allEvents = Event.objects.all()
+    #     print(request)
+    #     return Response({'data': 'hi'})

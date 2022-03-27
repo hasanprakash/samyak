@@ -4,12 +4,15 @@ import bg from "./bg.png";
 import BaseButton from '../../components/UI/BaseButton';
 
 const EventCards = (props) => {
+  var heading = props.event.heading;
+  var description = props.event.description;
+  var imgUrl = props.event.imgUrl;
   return (
     <div className="event_page">
-      <img className="event__bgimg" src={props.imgUrl ? props.imgUrl : bg} alt="bg" />
+      <img className="event__bgimg" src={imgUrl ? imgUrl : bg} alt="bg" />
       <div className="event__content event__box1">
-        <h3>{props.heading}</h3>
-        <p>{props.description}</p>
+        <h3>{heading}</h3>
+        <p>{description}</p>
         <BaseButton onClick={props.onClick}>REGISTER</BaseButton>
       </div>
     </div>

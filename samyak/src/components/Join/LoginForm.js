@@ -102,7 +102,7 @@ const LoginForm = (props) => {
   return (
     <form className="signin-form" onSubmit={formHandler}>
       <div className="form-group">
-        <BaseInput name="username" type="text" placeholder="Username" />
+        <BaseInput name="username" type="text" placeholder="College ID" />
       </div>
       <div className="form-group">
         <BaseInput name="password" type="password" placeholder="Password" />
