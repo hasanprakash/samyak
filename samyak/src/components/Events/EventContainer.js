@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import EventCard from "../Cards/EventCard";
 
+import sdp2 from './sdp2.jpg';
+import sdp4 from './sdp4.jpg';
+
 const EventContainer = () => {
   const EventWrapper = styled.div`
     margin-top: 80px;
@@ -30,31 +33,25 @@ const EventContainer = () => {
   `;
   const events = [
     {
-      heading: "Event 1",
+      eventType: 'Technical',
+      heading: "SDP2",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Y20 Relay Learnathon for skill development project-2",
+      imgUrl: sdp2,
     },
     {
-      heading: "Event 2",
+      eventType: 'Technical',
+      heading: "SDP4",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      heading: "Event 3",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      heading: "Event 4",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Y20 Relay Learnathon for skill development project-4",
+      imgUrl: sdp4
     },
   ];
   return (
     <EventWrapper>
       <Events>
         {events.map((event) => (
-            <EventCard heading={event.heading} description={event.description}/>
+            <EventCard heading={event.heading} description={event.description} imgUrl={event.imgUrl}/>
         ))}
       </Events>
     </EventWrapper>

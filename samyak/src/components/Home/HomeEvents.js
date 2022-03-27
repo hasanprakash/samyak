@@ -144,8 +144,10 @@ const HomeEvents = () => {
             <EventTextContainer className="eve-text-cont">
               <TextContainerH1>Technical Events</TextContainerH1>
               <TextContainerP>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae qui labore aliquam voluptas dolores sequi!
+                Technical events are filled with fun, and these events are
+                designed in a new way for the participants to participate in
+                these events and to learn something new in every event and bag a
+                lot of exciting prizes and take them home.
               </TextContainerP>
             </EventTextContainer>
           </Event>
@@ -157,8 +159,10 @@ const HomeEvents = () => {
             <EventTextContainer className="eve-text-cont">
               <TextContainerH1>Non Technical Events</TextContainerH1>
               <TextContainerP>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae qui labore aliquam voluptas dolores sequi!
+                Non-technical events are known for the fun the participants have
+                while participating in these events. These events are designed
+                in such a distinct way to refresh the minds of all the
+                participants to give them a fresh experience.
               </TextContainerP>
             </EventTextContainer>
           </Event>
@@ -170,8 +174,12 @@ const HomeEvents = () => {
             <EventTextContainer className="eve-text-cont">
               <TextContainerH1>Grand Events</TextContainerH1>
               <TextContainerP>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae qui labore aliquam voluptas dolores sequi!
+                These events showcase the brilliance of students in every
+                regard, by shedding light on the myriad walks of learning they
+                find their interests firmly engrossed in. Calling for a quest
+                for their marvelous talents, this glittering array of events
+                portrays the latent spark in participants in its truest
+                greatness.
               </TextContainerP>
             </EventTextContainer>
           </Event>
@@ -183,8 +191,11 @@ const HomeEvents = () => {
             <EventTextContainer className="eve-text-cont">
               <TextContainerH1>Sports Events</TextContainerH1>
               <TextContainerP>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae qui labore aliquam voluptas dolores sequi!
+                The power of finding ground in one of the most challenging
+                abilities is confined to not many individuals, which makes the
+                celebration of this glorious gift all the more gratifying.
+                Participants get a unique opportunity to exhibit their
+                athleticism and penchant for triumph.
               </TextContainerP>
             </EventTextContainer>
           </Event>

@@ -1,6 +1,6 @@
 .event_page {
-  width: 300px;
-  height: 400px;
+  width: 375px;
+  height: 480px;
   position: relative;
   border: none;
   border-radius: 50px 10px 50px 10px;
@@ -15,7 +15,7 @@
   width: 105%;
   height: 105%;
   -o-object-fit: cover;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .event__content {
@@ -30,8 +30,8 @@
   text-align: center;
   background: linear-gradient(
     45deg,
-    rgba(232, 91, 4, 0.8),
-    rgba(186, 24, 27, 0.8)
+    rgba(232, 91, 4, 0.94),
+    rgba(186, 24, 27, 0.94)
   );
   -webkit-transition: all 0.5s linear;
   transition: all 0.5s linear;
