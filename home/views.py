@@ -4,11 +4,11 @@ from pyexpat import model
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .serializers import UserSerializers, PaymentSerializers, EventSerializers, ProfileSerializers
+from .serializers import UserSerializers, PaymentSerializers, EventSerializers, ProfileSerializers, EventRegisterSerializers, TeamSerializers
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
-from .models import Profile, Event, Payment
+from .models import Profile, Event, Payment, EventRegister, Team
 from rest_framework import serializers, viewsets
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -16,7 +16,7 @@ from rest_framework.decorators import api_view
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from instamojo_wrapper import Instamojo
 from django.conf import settings
 from rest_framework.views import APIView
@@ -33,7 +33,7 @@ def test(request):
 class UsersViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializers
     queryset = User.objects.all()   
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsAuthenticated, IsAdminUser]
 
     def list(self, request):
         return Response({'status': 'NOPEE!'})
@@ -55,15 +55,20 @@ class UsersViewSet(viewsets.ModelViewSet):
             return Response({"status": True, "message": "POST, World!"})
 
 
-# class PaymentsViewSet(viewsets.ModelViewSet):  
-#     serializer_class = PaymentSerializers
-#     queryset = Payment.objects.all()
+class EventRegisterViewSet(viewsets.ModelViewSet):
+    serializer_class = EventRegisterSerializers
+    queryset = EventRegister.objects.all()
+    permission_classes = [IsAuthenticated, IsAdminUser]
 
+class TeamViewSet(viewsets.ModelViewSet):
+    serializer_class = TeamSerializers
+    queryset = Team.objects.all()
+    permission_classes = [IsAuthenticated, IsAdminUser]
 
-# class EventsViewSet(viewsets.ModelViewSet):
-#     serializer_class = EventSerializers
-#     queryset = Event.objects.all()
-#     permission_classes = [permissions.AllowAny]
+class EventsViewSet(viewsets.ModelViewSet):
+    serializer_class = EventSerializers
+    queryset = Event.objects.all()
+    permission_classes = [permissions.AllowAny]
 
 
 class PaymentTempSerializers(serializers.ModelSerializer):
@@ -86,6 +91,7 @@ class UserAPIView(RetrieveAPIView):
     def get_object(self):
         return self.request.user
 
+      
 class ProfileView(ListAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializers
@@ -94,7 +100,7 @@ class ProfileView(ListAPIView):
         return User.objects.all()
 
 class PaymentView(APIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = [IsAuthenticated]
     serializer_class = PaymentSerializers
 
     def get(self, request):

@@ -8,10 +8,15 @@ const SamyakNavBar = () => {
     <div class="footer">
       <div class="footer-cont">
         <div class="links">
-          <div class="footer-logo">
-            <img src={logoImg} alt="logoImg" />
-            <p>SAMYAK 2022</p>
+          <div class="draft">
+            <h1>SAMYAK 2022</h1>
+            <p>
+              “Live The Change” is what this epic edition of Samyak would
+              profess as that is the sole way of reaching the zenith of talent
+              and ardour.
+            </p>
           </div>
+
           <div class="quickLinks">
             <p>Quick Links</p>
             <ul>
@@ -28,6 +33,11 @@ const SamyakNavBar = () => {
                 <Link to={`/team`}>Team</Link>
               </li>
             </ul>
+          </div>
+
+          <div class="footer-logo">
+            <img src={logoImg} alt="logoImg" />
+            <p>SAMYAK 2022</p>
           </div>
 
           <div class="contactUs">
@@ -63,7 +73,7 @@ const SamyakNavBar = () => {
           </div>
         </div>
         <div class="copyright">
-          <p>@Copyrights reserved Samyak2022</p>
+          <p>&#169;Copyrights Reserved Samyak_2022</p>
         </div>
       </div>
     </div>

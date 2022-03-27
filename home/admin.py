@@ -1,9 +1,39 @@
 from django.contrib import admin
-from .models import Profile, Event, Payment
+from .models import Profile, Event, Payment, EventRegister, Team
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources, fields
+from django.contrib.auth.models import User
 
 # Register your models here.
+
+class TeamAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ('id', 'fullname', 'wing', 'designation', 'gmail', 'is_paid')
+    list_filter = ('designation', 'wing', 'is_paid')
+    search_fields = ('id', 'fullname', 'wing', 'designation', 'gmail')
+    ordering = ['id', 'fullname', 'wing', 'designation', 'gmail', 'is_paid']
+    save_as = True
+    save_on_top = True
+
+
+admin.site.register(Team, TeamAdmin)
+
+class EventRegisterAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ('user', 'student_id', 'first_name', 'last_name', 'email', 'phone', 'event_name', 'Event_type', 'Event_date', 'Event_venue')
+    list_filter = ('event',)
+    search_fields = ['student_id', 'first_name', 'last_name', 'event_name', 'email', 'phone', ]
+    ordering = ['student_id', 'first_name', 'last_name', 'email', 'phone', 'event_name']
+
+    def Event_type(self, obj):
+        return obj.event.event_type
+
+    def Event_date(self, obj):
+        return obj.event.date
+
+    def Event_venue(self, obj):
+        return obj.event.venue
+
+
+admin.site.register(EventRegister, EventRegisterAdmin)
 
 class ProfileResource(resources.ModelResource):
     studentid = fields.Field(column_name='Id Number')
@@ -53,7 +83,7 @@ class ProfileAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 admin.site.register(Profile, ProfileAdmin)
 
 class EventAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('name', 'team_size', 'event_type', 'date', 'venue')
+    list_display = ('name', 'team_size', 'event_cat', 'department','event_type', 'date', 'venue')
     list_filter = ('event_type', 'team_size', 'venue')
     search_fields = ('name', 'team_size', 'event_type', 'date', 'venue')
     ordering = ['name', 'team_size', 'event_type', 'date', 'venue']
