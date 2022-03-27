@@ -1,8 +1,11 @@
+import { useEffect, useState } from 'react';
 import styled from "styled-components";
 import EventCard from "../Cards/EventCard";
 
-import sdp2 from './sdp2.jpg';
-import sdp4 from './sdp4.jpg';
+import axiosInstance from '../../axios';
+
+// import sdp2 from './sdp2.jpg';
+// import sdp4 from './sdp4.jpg';
 
 const EventContainer = () => {
   const EventWrapper = styled.div`
@@ -31,27 +34,21 @@ const EventContainer = () => {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
   `;
-  const events = [
-    {
-      eventType: 'Technical',
-      heading: "SDP2",
-      description:
-        "Y20 Relay Learnathon for skill development project-2",
-      imgUrl: sdp2,
-    },
-    {
-      eventType: 'Technical',
-      heading: "SDP4",
-      description:
-        "Y20 Relay Learnathon for skill development project-4",
-      imgUrl: sdp4
-    },
-  ];
+
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    axiosInstance.get('events/')
+      .then((response) => {
+        setEvents(response.data);
+      })
+      .catch((e) => console.log(e));
+  }, setEvents);
+
   return (
     <EventWrapper>
       <Events>
         {events.map((event) => (
-            <EventCard heading={event.heading} description={event.description} imgUrl={event.imgUrl}/>
+            <EventCard event={event}/>
         ))}
       </Events>
     </EventWrapper>

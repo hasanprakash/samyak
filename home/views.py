@@ -35,6 +35,9 @@ class UsersViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()   
     permission_classes = [IsAuthenticated, IsAdminUser]
 
+    def list(self, request):
+        return Response({'status': 'NOPEE!'})
+
     def create(self, request, pk=None):
         print(request.data)
         displayData = request.data
@@ -62,39 +65,33 @@ class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all()
     permission_classes = [IsAuthenticated, IsAdminUser]
 
-class PaymentsViewSet(viewsets.ModelViewSet):  
-    serializer_class = PaymentSerializers
-    queryset = Payment.objects.all()
-    permission_classes = [IsAuthenticated, IsAdminUser]
-
 class EventsViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializers
     queryset = Event.objects.all()
-    permission_classes = [IsAuthenticated, IsAdminUser]
+    permission_classes = [permissions.AllowAny]
+
 
 class PaymentTempSerializers(serializers.ModelSerializer):
     class Meta:
         model = Payment
         fields = '__all__'
-
 class ProfileTempSerializers(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ['phone','branch','year_of_study','gender','college_name']
-
 class UserTempSerializer(serializers.ModelSerializer):
     profile = ProfileTempSerializers()
     payment = PaymentTempSerializers()
     class Meta:
         model = User
         fields = ['id', 'username', 'first_name', 'last_name', 'email', 'profile', 'payment']
-
 class UserAPIView(RetrieveAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = UserTempSerializer
     def get_object(self):
         return self.request.user
 
+      
 class ProfileView(ListAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializers
@@ -109,6 +106,7 @@ class PaymentView(APIView):
     def get(self, request):
         print("SUCCESS METHOD")
         print(request)
+        Response({"status": 'UNAUTHORIZED'})
 
     def post(self, request):
         print(request.data)
@@ -175,3 +173,14 @@ class PaymentSuccessView(APIView):
     def post(self, request):
         print("IN POST ReQUUEST")
         return Response({'status': 'post request'})
+
+
+
+class EventsViewSet(viewsets.ModelViewSet):
+    serializer_class = EventSerializers
+    queryset = Event.objects.all()   
+    permission_classes = [permissions.IsAuthenticated]
+    # def create(self, request, pk=None):
+    #     # allEvents = Event.objects.all()
+    #     print(request)
+    #     return Response({'data': 'hi'})
