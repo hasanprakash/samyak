@@ -1,5 +1,5 @@
-const bigPortFolioIcon = require("../Bootstrap/img/big_portfolio_item_4.png");
-const portFolioItem4 = require("../Bootstrap/img/portfolio_item_4.png");
+// const bigPortFolioIcon = require("../Bootstrap/img/big_portfolio_item_4.png");
+// const portFolioItem4 = require("../Bootstrap/img/portfolio_item_4.png");
 
 const GalleryCard = (props) => {
   return (

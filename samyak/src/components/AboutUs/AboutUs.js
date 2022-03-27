@@ -7,7 +7,7 @@ const AboutUs = () => {
             <div className="aboutus__container">
                 <div className='navbar-cover'></div>
                 <div className='about-inner-container'>
-                    <div className='about-img'><img src='https://surabhi.web.app/static/media/kl_logo.5648b3c6.svg' style={{ width: '100%' }} /></div>
+                    <div className='about-img'><img src='https://surabhi.web.app/static/media/kl_logo.5648b3c6.svg' alt='kllogo' style={{ width: '100%' }} /></div>
                     <div className='about-desc'>
                         <h1 className='about-title'>About KL</h1>
                         <p style={{ textAlign: 'justify' }}>
@@ -30,7 +30,7 @@ const AboutUs = () => {
                             In the previous year’s SAMYAK was a huge success and we strive even more vigorously to make it much more welcomed. SAMYAK 20-21 was a huge success with num+ registrations and a footfall of around num.
                         </p>
                     </div>
-                    <div className='about-img'><img src={samyakLogo} style={{ width: '100%' }} /></div>
+                    <div className='about-img'><img src={samyakLogo} style={{ width: '100%' }} alt="samyaklogo"/></div>
                 </div>
                 <div className='about-divider'></div>
 
