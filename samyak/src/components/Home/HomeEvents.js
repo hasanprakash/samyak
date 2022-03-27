@@ -34,7 +34,7 @@ const EventContainer = styled.section`
 const Title = styled.h1`
   color: #44056c;
   font-size: 40px;
-  width: 350px;
+  width: 850px;
   text-align: center;
   letter-spacing: 4px;
 `;
@@ -134,7 +134,7 @@ const HomeEvents = () => {
   return (
     <div>
       <EventContainer className="events-cont">
-        <Title className="title">SEE EVERYTHING WE HAVE TO OFFER</Title>
+        <Title className="title">NATIONAL LEVEL TECHNO MANAGEMENT FEST</Title>
         <Events className="events">
           <Event className="event1 event">
             <EventImageContainer className="eve-img-cont">

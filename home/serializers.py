@@ -23,8 +23,12 @@ class PaymentSerializers(serializers.ModelSerializer):
         model = Payment
         fields = '__all__'
 
-
 class EventRegisterSerializers(serializers.ModelSerializer):
     class Meta:
         model = EventRegister
+        fields = '__all__'
+
+class TeamSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Team
         fields = '__all__'
