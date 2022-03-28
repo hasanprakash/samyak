@@ -40,9 +40,10 @@ CORS_ORIGIN_WHITELIST = [
     'https://icy-hill-0dc571800.1.azurestaticapps.net',
     'http://64.227.180.177',
     'https://backend.gowravchowdary.xyz'
+    'https://klsamyak.in',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://localhost:8000', 'https://samyaktesting.azurewebsites.net', 'https://icy-hill-0dc571800.1.azurestaticapps.net', 'http://64.227.180.177', 'https://klsamyak.azurewebsites.net', 'https://backend.gowravchowdary.xyz']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://localhost:8000', 'https://samyaktesting.azurewebsites.net', 'https://icy-hill-0dc571800.1.azurestaticapps.net', 'http://64.227.180.177', 'https://klsamyak.azurewebsites.net', 'https://backend.gowravchowdary.xyz', 'https://klsamyak.in']
 
 
 REST_FRAMEWORK = {

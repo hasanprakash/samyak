@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import EventCard from "../Cards/EventCard";
 
-import axiosInstance from '../../axios';
+import axiosInstance from "../../axios";
 
 // import sdp2 from './sdp2.jpg';
 // import sdp4 from './sdp4.jpg';
@@ -36,10 +36,30 @@ const EventContainer = () => {
   `;
 
   const [events, setEvents] = useState([]);
+  const [registeredEvents, setRegisteredEvents] = useState([]);
   useEffect(() => {
-    axiosInstance.get('events/')
+    axiosInstance
+      .get("events/")
       .then((response) => {
         setEvents(response.data);
+        let storage = localStorage.getItem("user")
+          ? JSON.parse(localStorage.getItem("user"))
+          : null;
+        const isAuthenticated = storage
+          ? storage.user[1].details.isAuth
+          : false;
+        if (isAuthenticated) {
+          axiosInstance
+            .get("registerevent/", {
+              params: {
+                user_id: storage.user[1].details.user_id,
+              },
+            })
+            .then((res) => {
+              setRegisteredEvents(res.data);
+            })
+            .catch((e) => console.log(e));
+        }
       })
       .catch((e) => console.log(e));
   }, setEvents);
@@ -48,7 +68,9 @@ const EventContainer = () => {
     <EventWrapper>
       <Events>
         {events.map((event) => (
-            <EventCard event={event}/>
+          registeredEvents.filter((revent) => revent.event_name === event.name).length > 0 ?
+          <EventCard key={event.name} event={event} isRegistered={true}/> :
+          <EventCard key={event.name} event={event} isRegistered={false} />
         ))}
       </Events>
     </EventWrapper>

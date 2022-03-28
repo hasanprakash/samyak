@@ -15,10 +15,10 @@ const DetailsObject = (props) => {
   return (
     <div>
       <div className="row">
-        <div className="col-sm-6">
+        <div className="col-sm-5">
           <H6 className="mb-0">{ props.heading }</H6>
         </div>
-        <Value className="col-sm-6 text-secondary">{ props.value }</Value>
+        <Value className="col-sm-7 text-secondary">{ props.value }</Value>
       </div>
       <br></br>
     </div>
