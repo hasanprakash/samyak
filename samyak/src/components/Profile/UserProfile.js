@@ -92,7 +92,7 @@ const UserProfile = (props) => {
                   />
                   <DetailsObject heading="College" value={props.user?props.user.profile?props.user.profile.college_name:'KLU':'KLU'} />
                   <DetailsObject heading="Gender" value={props.user?props.user.profile?props.user.profile.gender:'FEMALE':'FEMALE'} />
-                  <DetailsObject heading="Payment Status" value={props.user?props.user.payment? props.user.payment.payment_status.toString():'false':'false'} />
+                  <DetailsObject heading="Payment Status" value={props.user?props.user.payment? props.user.payment.payment_status.toString():':tick':'false'} />
                   <div className="row">{}    
                     <EditProfile>
                       <ProfileButton>EDIT PROFILE</ProfileButton>

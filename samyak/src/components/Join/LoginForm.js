@@ -127,7 +127,7 @@ const LoginForm = (props) => {
           </label> */}
         </div>
         <div className="w-50 text-md-right">
-          <a href="0#" style={{ color: "#fff" }}>
+          <a href="https://klsamyakbackend.in/password_reset" style={{ color: "#fff" }}>
             Forgot Password
           </a>
         </div>

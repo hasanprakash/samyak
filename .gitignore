@@ -13,6 +13,9 @@
 [Ll]ocal
 [Ss]cripts
 pyvenv.cfg
+.firebaserc
+firebase.json
+.firebase
 .venv
 pip-selfcheck.json
 
