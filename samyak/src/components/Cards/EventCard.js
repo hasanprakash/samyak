@@ -10,8 +10,7 @@ const EventCards = (props) => {
   const navigate = useNavigate();
   var heading = props.event.name;
   var description = props.event.description;
-  // var imgUrl = props.event.imgUrl;
-  var imgUrl = null;
+  var imgUrl = props.event.event_image;
   let isRegistered = props.isRegistered
   const [registerText, setRegisterText] = useState(true);
   const eventRegisterHandler = () => {

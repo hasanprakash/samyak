@@ -37,7 +37,7 @@ class Event(models.Model):
     cash_prize_3 = models.IntegerField(default=500)
     date = models.DateTimeField()
     venue = models.CharField(default='CSE Block', max_length=30)
-    event_image = models.ImageField(upload_to='events/', blank=True)
+    event_image = models.CharField(max_length=200, default=None)
 
 
 class Payment(models.Model):
