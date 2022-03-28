@@ -1,5 +1,11 @@
+import { useEffect, useState } from 'react';
 import styled from "styled-components";
 import EventCard from "../Cards/EventCard";
+
+import axiosInstance from '../../axios';
+
+// import sdp2 from './sdp2.jpg';
+// import sdp4 from './sdp4.jpg';
 
 const EventContainer = () => {
   const EventWrapper = styled.div`
@@ -28,33 +34,21 @@ const EventContainer = () => {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
   `;
-  const events = [
-    {
-      heading: "Event 1",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      heading: "Event 2",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      heading: "Event 3",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-    {
-      heading: "Event 4",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-  ];
+
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    axiosInstance.get('events/')
+      .then((response) => {
+        setEvents(response.data);
+      })
+      .catch((e) => console.log(e));
+  }, setEvents);
+
   return (
     <EventWrapper>
       <Events>
         {events.map((event) => (
-            <EventCard heading={event.heading} description={event.description}/>
+            <EventCard event={event}/>
         ))}
       </Events>
     </EventWrapper>

@@ -10,7 +10,6 @@ import event4 from "./img/Abstract Dodgeball Player Background.svg";
 
 const EventContainer = styled.section`
   color: #252525;
-  height: 100vh;
   width: 100vw;
   background-color: #fff;
   z-index: 800;
@@ -51,13 +50,14 @@ const Events = styled.div`
   align-items: center;
   -ms-flex-pack: distribute;
   justify-content: space-around;
+  flex-flow:row wrap;
 `;
 
 const Event = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 25%;
+  width: 320px;
   height: 60%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -125,6 +125,7 @@ const TextContainerH1 = styled.h1`
 
 const TextContainerP = styled.p`
   color: #44056c;
+  text-align:justify;
   font-size: 16px;
   font-weight: 300;
   line-height: 25px;
@@ -142,10 +143,12 @@ const HomeEvents = () => {
               <EventImageSpan>1</EventImageSpan>
             </EventImageContainer>
             <EventTextContainer className="eve-text-cont">
-              <TextContainerH1>Technical Events</TextContainerH1>
+              <TextContainerH1>Technical & Non Technical Events</TextContainerH1>
               <TextContainerP>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae qui labore aliquam voluptas dolores sequi!
+                Technical events are filled with fun, and these events are
+                designed in a new way for the participants to participate in
+                these events and to learn something new in every event and bag a
+                lot of exciting prizes and take them home.
               </TextContainerP>
             </EventTextContainer>
           </Event>
@@ -155,10 +158,12 @@ const HomeEvents = () => {
               <EventImageSpan>2</EventImageSpan>
             </EventImageContainer>
             <EventTextContainer className="eve-text-cont">
-              <TextContainerH1>Non Technical Events</TextContainerH1>
+              <TextContainerH1>Project Exhibition</TextContainerH1>
               <TextContainerP>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae qui labore aliquam voluptas dolores sequi!
+                Non-technical events are known for the fun the participants have
+                while participating in these events. These events are designed
+                in such a distinct way to refresh the minds of all the
+                participants to give them a fresh experience.
               </TextContainerP>
             </EventTextContainer>
           </Event>
@@ -168,10 +173,14 @@ const HomeEvents = () => {
               <EventImageSpan>3</EventImageSpan>
             </EventImageContainer>
             <EventTextContainer className="eve-text-cont">
-              <TextContainerH1>Grand Events</TextContainerH1>
+              <TextContainerH1>Literary Events</TextContainerH1>
               <TextContainerP>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae qui labore aliquam voluptas dolores sequi!
+                These events showcase the brilliance of students in every
+                regard, by shedding light on the myriad walks of learning they
+                find their interests firmly engrossed in. Calling for a quest
+                for their marvelous talents, this glittering array of events
+                portrays the latent spark in participants in its truest
+                greatness.
               </TextContainerP>
             </EventTextContainer>
           </Event>
@@ -181,10 +190,29 @@ const HomeEvents = () => {
               <EventImageSpan>4</EventImageSpan>
             </EventImageContainer>
             <EventTextContainer className="eve-text-cont">
-              <TextContainerH1>Sports Events</TextContainerH1>
+              <TextContainerH1>Spot Events</TextContainerH1>
               <TextContainerP>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae qui labore aliquam voluptas dolores sequi!
+                The power of finding ground in one of the most challenging
+                abilities is confined to not many individuals, which makes the
+                celebration of this glorious gift all the more gratifying.
+                Participants get a unique opportunity to exhibit their
+                athleticism and penchant for triumph.
+              </TextContainerP>
+            </EventTextContainer>
+          </Event>
+          <Event className="event4 event">
+            <EventImageContainer className="eve-img-cont">
+              <EventImage src={event4} alt="event4" />
+              <EventImageSpan>5</EventImageSpan>
+            </EventImageContainer>
+            <EventTextContainer className="eve-text-cont">
+              <TextContainerH1>Paper & Poster Presentation</TextContainerH1>
+              <TextContainerP>
+                The power of finding ground in one of the most challenging
+                abilities is confined to not many individuals, which makes the
+                celebration of this glorious gift all the more gratifying.
+                Participants get a unique opportunity to exhibit their
+                athleticism and penchant for triumph.
               </TextContainerP>
             </EventTextContainer>
           </Event>

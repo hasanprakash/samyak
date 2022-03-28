@@ -5,10 +5,10 @@ import concertImage from "./img/concertdj.png";
 
 const MusicContainer = styled.section`
   position: relative;
-  height: 180vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-height:800px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -22,6 +22,8 @@ const MusicContainer = styled.section`
 
 const MusicBackground = styled.img`
   position: absolute;
+  height:50% ;
+  width:100vw;
   z-index: -1;
 `;
 
@@ -37,6 +39,7 @@ const ConcertContainer = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-flow:row wrap;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -44,20 +47,25 @@ const ConcertContainer = styled.div`
   -ms-flex-pack: justify;
   justify-content: space-between;
   width: 80vw;
+  margin-bottom:50px;
 `;
 
 const ConcertContainerP = styled.p`
   color: #fff;
-  width: 400px;
-  line-height: 25px;
-  font-size: 16px;
+  text-align:justify;
+  width: 480px;
+  line-height: 28px;
+  font-size: 22px;
+  margin: auto;
 `;
 
 const ConcertContainerImage = styled.img`
-  height: 600px;
-  width: 600px;
+  margin: auto;
   -o-object-fit: contain;
   object-fit: contain;
+  @media (max-width:768px){
+    width: 75%;
+  }
 `;
 
 const HomeMusic = () => {
@@ -76,14 +84,20 @@ const HomeMusic = () => {
           style={{ bottom: 0, transform: "rotate(180deg)" }}
           alt="back2"
         />
-        <MusicTitle className="music-title Mtitle-1" style={{ marginTop: "80px" }}>
+        <MusicTitle
+          className="music-title Mtitle-1"
+          style={{ marginTop: "80px" }}
+        >
           TUNE IN TO VIBE WITH YOUR FRIENDS
         </MusicTitle>
         <ConcertContainer className="concert-cont">
           <ConcertContainerP>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-            nostrum itaque sapiente sint in perspiciatis! Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Vitae, quia?
+            “Live The Change” is what this epic edition of Samyak would profess
+            as that is the sole way of reaching the zenith of talent and ardour.
+            Taking to the skies from this exhilarating theme, Samyak’ 22 is on
+            the verge of turning into reality a unique vision, that
+            distinguishes its brilliance from the rest and carries it to the
+            crown.
           </ConcertContainerP>
           <ConcertContainerImage src={concertImage} alt="concert" />
         </ConcertContainer>
@@ -91,7 +105,7 @@ const HomeMusic = () => {
           className="music-title Mtitle-2"
           style={{ marginButtom: "80px", width: "550px", zIndex: 2 }}
         >
-          WANNA KNOW WHAT WE GOT FOR ALL THE FOODIES OUT THERE
+          SURABHI 2022
         </MusicTitle>
       </MusicContainer>
     </div>

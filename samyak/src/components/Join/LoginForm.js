@@ -10,10 +10,14 @@ const LoginForm = (props) => {
 
   const navigate = useNavigate();
 
-  // let storage = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+  
   // const access_token = storage ? storage.user[0].tokens.access_token : null;
   const { enqueueSnackbar } = useSnackbar();
   const formHandler = (event) => {
+    let storage = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    if(storage) {
+      localStorage.setItem('user', null);
+    }
     event.preventDefault();
     document.getElementById("login").disabled = true;
     let data = {};
@@ -61,7 +65,7 @@ const LoginForm = (props) => {
                   flash("Session Updated!!", "success");
                 else
                   flash("Login Successful", "success");
-                navigate('/');
+                navigate('/profile');
 
                 localStorage.removeItem('user');
                 localStorage.setItem('user', JSON.stringify(userobj));
@@ -102,7 +106,7 @@ const LoginForm = (props) => {
   return (
     <form className="signin-form" onSubmit={formHandler}>
       <div className="form-group">
-        <BaseInput name="username" type="text" placeholder="Username" />
+        <BaseInput name="username" type="text" placeholder="College ID" />
       </div>
       <div className="form-group">
         <BaseInput name="password" type="password" placeholder="Password" />

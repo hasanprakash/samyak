@@ -5,7 +5,7 @@ import "./NavBar.css";
 
 import styled from "styled-components";
 
-import kl_logo from "./KL_University_logo.png";
+// import kl_logo from "./KL_University_logo.png";
 import logoImg from "./SAMYAK_FaceLogo_white.png";
 
 const Logout = styled.a`
@@ -75,16 +75,23 @@ const NavBar = (props) => {
                 <li className="nav-element">
                   <Link to={`/team`}>TEAM</Link>
                 </li>
-                <li className="nav-element">
+                
+                {props.isAuth ? (<li className="nav-element">
                   <Link to={`/profile`}>PROFILE</Link>
                 </li>
+                  
+                ) : (
+                  <li className="nav-element">
+                    <Link to={`/join`}>LOGIN</Link>
+                  </li>
+                )}
                 {props.isAuth ? (
                   <li className="nav-element">
                     <Logout onClick={userLogout}>LOGOUT</Logout>
                   </li>
                 ) : (
                   <li className="nav-element">
-                    <Link to={`/join`}>JOIN</Link>
+                    <Link to={`/join`}>REGISTER</Link>
                   </li>
                 )}
               </ul>
