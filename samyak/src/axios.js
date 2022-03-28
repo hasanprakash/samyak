@@ -31,9 +31,7 @@ axiosInstance.interceptors.response.use(
 
 		if (typeof error.response === 'undefined') {
 			alert(
-				'A server/network error occurred. ' +
-					'Looks like CORS might be the problem. ' +
-					'Sorry about this - we will get it fixed shortly.'
+				'A server/network error occurred. Please try again later.'
 			);
 			return Promise.reject(error);
 		}
@@ -83,7 +81,7 @@ axiosInstance.interceptors.response.use(
 						});
 				} else {
 					console.log('Refresh token is expired', tokenParts.exp, now);
-					// window.location.href = '/join/';
+					window.location.href = '/join/';
 				}
 			} else {
 				console.log('Refresh token not available.');

@@ -1,6 +1,6 @@
 .event_page {
-  width: 375px;
-  height: 480px;
+  width: 350px;
+  height: 350px;
   position: relative;
   border: none;
   border-radius: 50px 10px 50px 10px;
@@ -15,7 +15,7 @@
   width: 105%;
   height: 105%;
   -o-object-fit: cover;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .event__content {
@@ -36,7 +36,7 @@
   -webkit-transition: all 0.5s linear;
   transition: all 0.5s linear;
 }
-
+/* rgba(232, 91, 4, 0.94), */
 .event__content.event__box1 {
   -webkit-clip-path: circle(0% at 0 100%);
   clip-path: circle(0% at 0 100%);

@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from .models import Profile, Event, Payment, EventRegister, Team
+from .models import Profile, Event, Payment, RegisteredEvent, Team
 
 class ProfileSerializers(serializers.ModelSerializer):
     class Meta:
@@ -23,9 +23,9 @@ class PaymentSerializers(serializers.ModelSerializer):
         model = Payment
         fields = '__all__'
 
-class EventRegisterSerializers(serializers.ModelSerializer):
+class RegisteredEventSerializers(serializers.ModelSerializer):
     class Meta:
-        model = EventRegister
+        model = RegisteredEvent
         fields = '__all__'
 
 class TeamSerializers(serializers.ModelSerializer):
