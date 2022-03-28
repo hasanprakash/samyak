@@ -157,7 +157,7 @@ class PaymentView(APIView):
                 buyer_name=username,
                 email=email,
                 phone=phone,
-                redirect_url='https://klsamyak.azurewebsites.net/home/paymentsuccess'
+                redirect_url='https://klsamyakbackend.in/home/paymentsuccess'
             )
             print(response)
             payment_obj.receipt_id = response['payment_request']['id']
