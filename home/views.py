@@ -21,6 +21,7 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from instamojo_wrapper import Instamojo
 from django.conf import settings
 from rest_framework.views import APIView
+from django.contrib.auth.decorators import login_required
 
 api = Instamojo(api_key=settings.API_KEY, auth_token=settings.AUTH_TOKEN)
 # Create your views here.
@@ -30,6 +31,48 @@ def home(request):
 
 def test(request):
     return HttpResponse("<h1>Samyak Project Testing Page</h1>")
+
+
+@login_required(login_url='/admin')
+def admin_dashboard(request):
+    if not request.user.is_superuser:
+        return redirect('/')
+    user_count = User.objects.filter().count
+    payment_count = Payment.objects.filter(payment_status=True).count()
+    total_amount = payment_count * 210.62
+    CSE = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="CSE").count()
+    BT = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="BT").count()
+    ME = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="ME").count()
+    EEE = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="EEE").count()
+    CE = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="CE").count()
+    ECM = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",  
+                                       user__profile__branch="ECM").count()
+    ECE = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="ECE").count()
+    AIDS = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="AI&DS").count()
+    CSIT = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="CS&IT").count()
+    
+    BBA = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="BBA").count()
+
+    MBA = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="MBA").count()
+
+    LLB = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="LLB").count()
+
+    context = {'user_count': user_count, 'payment_count': payment_count, 'total_amount': total_amount,
+        'CSE': CSE, 'BT': BT, 'ME': ME, 'EEE' : EEE, 'CE' : CE, 'ECM': ECM, 'ECE': ECE, 'AIDS': AIDS, 'CSIT': CSIT,
+        'BBA': BBA, 'MBA': MBA, 'LLB': LLB}
+    return render(request, 'admin_dashboard.html', context)
+
 
 class UsersViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializers
