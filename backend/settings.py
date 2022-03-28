@@ -120,7 +120,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -161,8 +161,8 @@ DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'samyak',
-#         'USER': 'samyak',
-#         'PASSWORD': 'password',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
 #         'HOST': 'localhost',
 #         'PORT': '3306'
 #     }
