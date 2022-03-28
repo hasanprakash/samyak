@@ -21,6 +21,7 @@ class Event(models.Model):
     department = models.CharField(max_length=100)
     name = models.CharField(default=None, primary_key=True, max_length=100)
     description = models.TextField(default=None, max_length=2000)
+<<<<<<< HEAD
     guidelines = models.TextField(default=None, max_length=2000, null=True)
     no_of_rounds = models.IntegerField(default=1, null=True)
     round_1_details = models.TextField(default=None, max_length=2000, null=True)
@@ -38,6 +39,25 @@ class Event(models.Model):
     date = models.DateTimeField(null=True)
     venue = models.CharField(default='CSE Block', max_length=30, null=True)
     event_image = models.CharField(max_length=300, null=True)
+=======
+    guidelines = models.TextField(default=None, max_length=2000)
+    no_of_rounds = models.IntegerField(default=1)
+    round_1_details = models.TextField(default=None, max_length=2000)
+    round_2_details = models.TextField(default=None, max_length=2000)
+    round_3_details = models.TextField(default=None, max_length=2000)
+    team_size = models.IntegerField(default=1)
+    mode_of_conduct = models.CharField(max_length=20)
+    event_core = models.CharField(max_length=50, default=None)
+    event_core_phone = models.CharField(max_length=10, default=999999999)
+    event_coordinator = models.CharField(max_length=50, default=None)
+    event_coordinator_phone = models.CharField(max_length=10, default=999999999)
+    cash_prize_1 = models.IntegerField(default=500)
+    cash_prize_2 = models.IntegerField(default=500)
+    cash_prize_3 = models.IntegerField(default=500)
+    date = models.DateTimeField()
+    venue = models.CharField(default='CSE Block', max_length=30)
+    event_image = models.CharField(max_length=200, default=None)
+>>>>>>> 265ca2b02d6398ab05c1d1cac5b6382914f3085a
 
 
 class Payment(models.Model):
