@@ -69,12 +69,12 @@ const NavBar = (props) => {
                 <li className="nav-element">
                   <Link to={`/gallery`}>GALLERY</Link>
                 </li>
-                <li className="nav-element">
+                {/* <li className="nav-element">
                   <Link to={`/oursponsors`}>OUR SPONSORS</Link>
-                </li>
-                <li className="nav-element">
+                </li> */}
+                {/* <li className="nav-element">
                   <Link to={`/team`}>TEAM</Link>
-                </li>
+                </li> */}
                 <li className="nav-element">
                   <Link to={`/profile`}>PROFILE</Link>
                 </li>
