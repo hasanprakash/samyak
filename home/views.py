@@ -68,9 +68,49 @@ def admin_dashboard(request):
     LLB = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
                                        user__profile__branch="LLB").count()
 
+    BCom = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="B.COM").count()
+
+    MCom = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="M.COM").count()
+
+    BFA = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="BFA").count()
+
+    Arch = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="ARCHITECTURE").count()
+
+    FED = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="FED").count()
+
+    MCA = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="MCA").count()
+
+    BCA = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="BCA").count()
+
+    BSCVC = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="B.SC.VC").count()
+
+    BPharam = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="B.PHARM").count()
+
+    MPharam = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="M.PHARM").count()
+    
+    Agri = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="AGRICULTURE").count()
+    
+    BHM = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="BHM").count()
+    
+    BAIAS = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="BA-IAS").count()
+
     context = {'user_count': user_count, 'payment_count': payment_count, 'total_amount': total_amount,
         'CSE': CSE, 'BT': BT, 'ME': ME, 'EEE' : EEE, 'CE' : CE, 'ECM': ECM, 'ECE': ECE, 'AIDS': AIDS, 'CSIT': CSIT,
-        'BBA': BBA, 'MBA': MBA, 'LLB': LLB}
+        'BBA': BBA, 'MBA': MBA, 'LLB': LLB, 'BCom': BCom, 'MCom': MCom, 'BFA': BFA, 'BCA': BCA, 'Arch': Arch, 'FED': FED,
+        'MCA': MCA, 'BCA': BCA, 'BSCVC': BSCVC, 'BPharam': BPharam, 'MPharam': MPharam, 'Agri': Agri, 'BHM': BHM, 'BAIAS': BAIAS}
     return render(request, 'admin_dashboard.html', context)
 
 
