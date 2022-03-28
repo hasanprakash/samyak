@@ -34,7 +34,7 @@ def test(request):
 class UsersViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializers
     queryset = User.objects.all()   
-    permission_classes = [IsAuthenticated, IsAdminUser]
+    permission_classes = [permissions.AllowAny]
 
     def list(self, request):
         return Response({'status': 'NOPEE!'})

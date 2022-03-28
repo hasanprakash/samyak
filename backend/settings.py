@@ -39,7 +39,7 @@ CORS_ORIGIN_WHITELIST = [
     'https://klsamyak.azurewebsites.net',
     'https://icy-hill-0dc571800.1.azurestaticapps.net',
     'http://64.227.180.177',
-    'https://backend.gowravchowdary.xyz'
+    'https://backend.gowravchowdary.xyz',
     'https://klsamyak.in',
 ]
 
