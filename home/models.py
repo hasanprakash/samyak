@@ -39,7 +39,6 @@ class Event(models.Model):
     venue = models.CharField(default='CSE Block', max_length=30, null=True)
     event_image = models.CharField(max_length=300, null=True)
 
-
 class Payment(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     receipt_id = models.CharField(max_length=100)

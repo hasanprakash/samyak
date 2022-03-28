@@ -136,9 +136,9 @@ class PaymentResource(resources.ModelResource):
 
 class PaymentAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = PaymentResource
-    list_display = ('user', 'firstname', 'lastname', 'receipt_id', 'email', 'phone', 'transaction_amount', 'payment_status', 'payment_time', 'mojo_id')
-    list_filter = ('payment_status',)
-    search_fields = ('user__username', 'user__email', 'user__first_name', 'user__last_name', 'user__profile__phone', 'mojo_id')
+    list_display = ('user', 'firstname', 'lastname', 'receipt_id', 'email', 'phone', 'branch', 'transaction_amount', 'payment_status', 'payment_time', 'mojo_id')
+    list_filter = ('payment_status', 'user__profile__branch')
+    search_fields = ('user__username', 'user__email', 'user__first_name', 'user__last_name', 'user__profile__phone')
     ordering = ['user', 'receipt_id', 'payment_time']
     save_as = True
     save_on_top = True
@@ -155,5 +155,7 @@ class PaymentAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     def phone(self, obj):
         return obj.user.profile.phone
 
+    def branch(self, obj):
+        return obj.user.profile.branch
 
 admin.site.register(Payment, PaymentAdmin)
