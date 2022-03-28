@@ -1,9 +1,9 @@
+// import "./Admin.css"; 
+ 
 const Admin = () => {
     return (
-        <div className="admin__container">
-            <h1>Admin</h1>
-        </div>
-    )
+        <div>.</div>
+    );
 }
 
 export default Admin;

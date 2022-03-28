@@ -62,7 +62,7 @@ const EventContainer = () => {
         }
       })
       .catch((e) => console.log(e));
-  }, setEvents);
+  }, [setEvents]);
 
   return (
     <EventWrapper>

@@ -5,11 +5,11 @@ from unicodedata import name
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .serializers import UserSerializers, PaymentSerializers, EventSerializers, ProfileSerializers, EventRegisterSerializers, RegisteredEventSerializers, TeamSerializers
+from .serializers import UserSerializers, PaymentSerializers, EventSerializers, ProfileSerializers, RegisteredEventSerializers, TeamSerializers
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
-from .models import Profile, Event, Payment, EventRegister, RegisteredEvent, Team
+from .models import Profile, Event, Payment, RegisteredEvent, Team
 from rest_framework import serializers, viewsets
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -55,9 +55,6 @@ class UsersViewSet(viewsets.ModelViewSet):
             , year_of_study=displayData['year'], gender=displayData['gender'])
             return Response({"status": True, "message": "POST, World!"})
 
-
-class EventRegisterViewSet(viewsets.ModelViewSet):
-    pass
 
 class RegisterEventViewSet(viewsets.ModelViewSet):
     serializer_class = RegisteredEventSerializers

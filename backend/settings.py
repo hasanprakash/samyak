@@ -24,9 +24,9 @@ SECRET_KEY = 'django-insecure-v86z5^fuhccs6nt=#8%v#c2ns8_x1)3l!n2s*)rg0&e1d&7_b#
 DEBUG = True
 
 # 'samyaktesting.azurewebsites.net'
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'klsamyak.in', 'www.klsamyak.in', '64.227.180.177', 'klsamyak.azurewebsites.net', 'backend.gowravchowdary.xyz']
-ALLOWED_HOSTS = ['*']
-# CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'klsamyak.in', 'www.klsamyak.in', '64.227.180.177', 'klsamyak.azurewebsites.net', 'klsamyakbackend.in']
+#ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = [
     'http://google.com',
@@ -39,11 +39,11 @@ CORS_ORIGIN_WHITELIST = [
     'https://klsamyak.azurewebsites.net',
     'https://icy-hill-0dc571800.1.azurestaticapps.net',
     'http://64.227.180.177',
-    'https://backend.gowravchowdary.xyz',
+    'https://klsamyakbackend.in',
     'https://klsamyak.in',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://localhost:8000', 'https://samyaktesting.azurewebsites.net', 'https://icy-hill-0dc571800.1.azurestaticapps.net', 'http://64.227.180.177', 'https://klsamyak.azurewebsites.net', 'https://backend.gowravchowdary.xyz', 'https://klsamyak.in']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://localhost:8000', 'https://samyaktesting.azurewebsites.net', 'https://icy-hill-0dc571800.1.azurestaticapps.net', 'http://64.227.180.177', 'https://klsamyak.azurewebsites.net', 'https://klsamyakbackend.in', 'https://klsamyak.in']
 
 
 REST_FRAMEWORK = {
@@ -146,48 +146,16 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'samyak',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
-#         'HOST': 'localhost',
-#         'PORT': '3306'
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'samyak',
-        'USER': 'samyak',
-        'PASSWORD': 'Hasan@123',
-        'HOST': 'klsamyak.mysql.database.azure.com',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
         'PORT': '3306'
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'bjae2epuwox1vft4fzdy',
-#         'USER': 'urnx9xhecrom1i8f',
-#         'PASSWORD': 'BIMW9oQ2fkIHN0eXpEK0',
-#         'HOST': 'bjae2epuwox1vft4fzdy-mysql.services.clever-cloud.com',
-#         'PORT': '3306'
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'defaultdb',
-#         'USER': 'doadmin',
-#         'PASSWORD': 'v0D6yQ8Z9MFUOMup',
-#         'HOST': 'samyak-do-user-11176181-0.b.db.ondigitalocean.com',
-#         'PORT': '25060'
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
