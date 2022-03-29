@@ -1,8 +1,10 @@
+import code
 from dataclasses import fields
 import profile
 from pyexpat import model
 from unicodedata import name
-from django.http import HttpResponse
+from xmlrpc.client import ResponseError
+from django.http import Http404, HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .serializers import UserSerializers, PaymentSerializers, EventSerializers, ProfileSerializers, RegisteredEventSerializers, TeamSerializers
@@ -18,6 +20,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.exceptions import PermissionDenied
 from instamojo_wrapper import Instamojo
 from django.conf import settings
 from rest_framework.views import APIView
@@ -33,11 +36,14 @@ def test(request):
 
 class UsersViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializers
-    queryset = User.objects.all()   
+    queryset = User.objects.none() 
     permission_classes = [permissions.AllowAny]
 
+    def options(self, request):
+        raise PermissionDenied(detail=None, code=None)
+
     def list(self, request):
-        return Response({'status': 'NOPEE!'})
+        raise PermissionDenied(detail=None, code=None)
 
     def create(self, request, pk=None):
         print(request.data)

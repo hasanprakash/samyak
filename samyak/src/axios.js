@@ -8,14 +8,14 @@ export { baseURL };
 // console.log(baseURL);
 
 let storage = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
-let access_token = storage ? storage.user[0].tokens.access_token : null;
+// let access_token = storage ? storage.user[0].tokens.access_token : null;
 
 const axiosInstance = axios.create({
 	baseURL: baseURL,
 	timeout: 120000,
 	headers: {
-		Authorization: access_token
-			? 'JWT ' + access_token
+		Authorization: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null ? storage.user[0].tokens.access_token : null
+			? 'JWT ' + localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null ? storage.user[0].tokens.access_token : null
 			: null,
 		'Content-Type': 'application/json',
 		accept: 'application/json',

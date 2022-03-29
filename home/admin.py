@@ -87,7 +87,7 @@ admin.site.register(Profile, ProfileAdmin)
 
 class EventAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('name', 'team_size', 'event_cat', 'department','event_type', 'date', 'venue')
-    list_filter = ('event_type', 'team_size', 'venue')
+    list_filter = ('event_type', 'team_size', 'venue', 'department')
     search_fields = ('name', 'team_size', 'event_type', 'date', 'venue')
     ordering = ['name', 'team_size', 'event_type', 'date', 'venue']
     save_as = True

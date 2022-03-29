@@ -13,21 +13,41 @@ const EventCards = (props) => {
   var imgUrl = props.event.event_image;
   let isRegistered = props.isRegistered
   const [registerText, setRegisterText] = useState(true);
-  const eventRegisterHandler = () => {
-    
-    console.log("Registering for event", heading, description);
+  const eventRegisterHandler = () => {    
     let storage = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
     const isAuthenticated = storage ? storage.user[1].details.isAuth : false;
     if(isAuthenticated) {
       axiosInstance
-        .post('registerevent/', {
-          event_name: props.event.name,
-          reg_id: storage.user[1].details.user_id,
+        .get('user/', {
+          headers: {
+            Authorization: "JWT " + storage.user[0].tokens.access_token,
+          }
         })
-        .then((response) => {
-          console.log("Response: ", response.data);
+        .then((res) => {
+          // console.log(res.data);
+          let obj = res.data;
+          if(obj.payment && obj.payment.payment_status)  {
+            axiosInstance
+              .post("registerevent/", {
+                event_name: props.event.name,
+                reg_id: storage.user[1].details.user_id,
+              }, {
+                headers: {
+                  Authorization: "JWT " + storage.user[0].tokens.access_token,
+                }
+              })
+              .then((res1) => {
+                setRegisterText(false);
+              })
+              .catch((e) => console.log(e)); 
+          }
+          else {
+            navigate("/profile");
+          }
         })
-        .catch((e) => console.log(e));
+        .catch((e) => {
+          navigate('/join');
+        })
     }
     else {
       localStorage.setItem('user', null);

@@ -72,7 +72,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route exact path="/aboutus" element={<AboutUs />} />
-          <Route exact path="/events" element={<Events setIsAuth={setIsAuth}/>} />
+          <Route exact path="/events" element={<Events isAuth={isAuth} setIsAuth={setIsAuth}/>} />
           <Route exact path="/gallery" element={<Gallery />} />
           <Route exact path="/oursponsors" element={<OurSponsors />} />
           <Route exact path="/team" element={<Team />} />
