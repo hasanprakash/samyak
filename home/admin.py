@@ -37,6 +37,30 @@ class RegisteredEventAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 admin.site.register(RegisteredEvent, RegisteredEventAdmin)
 
+class CollegeListFilter(admin.SimpleListFilter):
+    title = 'College name'
+    parameter_name = 'Profile'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('KL Vijayawada', 'KL Vijayawada'),
+            ('KL Hyderabad', 'KL Hyderabad'),
+            ('Others', 'Others'),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == 'KL Vijayawada':
+            return queryset.filter(
+                college_name="KL Vijayawada",
+            )
+        if self.value() == 'KL Hyderabad':
+            return queryset.filter(
+                college_name="KL Hyderabad",
+            )
+        if self.value() == 'Others':
+            return queryset.exclude(
+                college_name="KL Hyderabad",
+            ).exclude(college_name="KL Vijayawada",)
 
 class ProfileResource(resources.ModelResource):
     studentid = fields.Field(column_name='Id Number')
@@ -64,7 +88,7 @@ class ProfileResource(resources.ModelResource):
 class ProfileAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = ProfileResource
     list_display = ('user', 'first_name', 'last_name', 'email', 'phone', 'branch', 'year_of_study', 'college_name', 'gender')
-    list_filter = ('branch', 'gender', 'year_of_study')
+    list_filter = ('branch', 'gender', 'year_of_study', CollegeListFilter)
     search_fields = ['user__username', 'user__email', 'user__first_name', 'user__last_name', 'user__profile__phone']
     ordering = ['user__username', 'branch', 'year_of_study', 'college_name', 'gender']
     save_as = True
@@ -136,7 +160,7 @@ class PaymentResource(resources.ModelResource):
 
 class PaymentAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = PaymentResource
-    list_display = ('user', 'firstname', 'lastname', 'receipt_id', 'email', 'phone', 'branch', 'transaction_amount', 'payment_status', 'payment_time', 'mojo_id')
+    list_display = ('user', 'payment_status', 'email', 'mojo_id', 'firstname', 'lastname', 'phone', 'branch', 'transaction_amount', 'receipt_id', 'payment_time', )
     list_filter = ('payment_status', 'user__profile__branch')
     search_fields = ('user__username', 'user__email', 'user__first_name', 'user__last_name', 'user__profile__phone', 'mojo_id')
     ordering = ['user', 'receipt_id', 'payment_time']
