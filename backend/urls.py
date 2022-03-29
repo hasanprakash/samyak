@@ -20,6 +20,7 @@ from rest_framework import routers
 from django.conf.urls.static import static
 from django.conf import settings
 from home import views
+from django.contrib.auth import views as auth_views
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -42,5 +43,8 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('home/', include('home.urls')),
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="password_reset_confirm.html"), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),   
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

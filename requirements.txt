@@ -6,3 +6,5 @@ django-import-export
 djangorestframework-simplejwt
 Pillow
 instamojo-wrapper
+django-bootstrap-v5==1.0.8
+django-crispy-forms==1.13.0

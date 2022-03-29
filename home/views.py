@@ -24,6 +24,18 @@ from rest_framework.exceptions import PermissionDenied
 from instamojo_wrapper import Instamojo
 from django.conf import settings
 from rest_framework.views import APIView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordResetForm
+
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail, BadHeaderError
+from django.contrib.auth.forms import PasswordResetForm
+from django.template.loader import render_to_string
+from django.db.models.query_utils import Q
+from django.utils.http import urlsafe_base64_encode
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
+from django.contrib import messages
 
 api = Instamojo(api_key=settings.API_KEY, auth_token=settings.AUTH_TOKEN)
 # Create your views here.
@@ -33,6 +45,115 @@ def home(request):
 
 def test(request):
     return HttpResponse("<h1>Samyak Project Testing Page</h1>")
+
+def password_reset_request(request):
+	if request.method == "POST":
+		password_reset_form = PasswordResetForm(request.POST)
+		if password_reset_form.is_valid():
+			data = password_reset_form.cleaned_data['email']
+			associated_users = User.objects.filter(Q(email=data))
+			if associated_users.exists():
+				for user in associated_users:
+					subject = "Password Reset Requested"
+					email_template_name = "password_reset_email.txt"
+					c = {
+					"email":user.email,
+					'domain':'klsamyakbackend.in',
+					'site_name': 'KL Samyak',
+					"uid": urlsafe_base64_encode(force_bytes(user.pk)),
+					"user": user,
+					'token': default_token_generator.make_token(user),
+					'protocol': 'https',
+					}
+					email = render_to_string(email_template_name, c)
+					try:
+						send_mail(subject, email, 'klsamyak2022@gmail.com' , [user.email], fail_silently=False)
+					except BadHeaderError:
+						return HttpResponse('Invalid header found.')
+					return redirect ("/password_reset/done/")
+	password_reset_form = PasswordResetForm()
+	return render(request=request, template_name="password_reset.html", context={"password_reset_form":password_reset_form})
+    
+@login_required(login_url='/admin')
+def admin_dashboard(request):
+    if not request.user.is_superuser:
+        return redirect('/')
+    user_count = User.objects.filter().count
+    payment_count = Payment.objects.filter(payment_status=True).count()
+    total_amount = payment_count * 210.62
+    CSE = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="CSE").count()
+    BT = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="BT").count()
+    ME = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="ME").count()
+    EEE = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="EEE").count()
+    CE = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="CE").count()
+    ECM = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",  
+                                       user__profile__branch="ECM").count()
+    ECE = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="ECE").count()
+    AIDS = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="AI&DS").count()
+    CSIT = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="CS&IT").count()
+    
+    BBA = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="BBA").count()
+
+    MBA = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="MBA").count()
+
+    LLB = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="LLB").count()
+
+    BCom = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="B.COM").count()
+
+    MCom = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="M.COM").count()
+
+    BFA = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="BFA").count()
+
+    Arch = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="ARCHITECTURE").count()
+
+    FED = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="FED").count()
+
+    MCA = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="MCA").count()
+
+    BCA = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="BCA").count()
+
+    BSCVC = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="B.SC.VC").count()
+
+    BPharam = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="B.PHARM").count()
+
+    MPharam = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="M.PHARM").count()
+    
+    Agri = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="AGRICULTURE").count()
+    
+    BHM = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="BHM").count()
+    
+    BAIAS = Payment.objects.filter(payment_status=True, user__profile__college_name="KL Vijayawada",
+                                       user__profile__branch="BA-IAS").count()
+
+    context = {'user_count': user_count, 'payment_count': payment_count, 'total_amount': total_amount,
+        'CSE': CSE, 'BT': BT, 'ME': ME, 'EEE' : EEE, 'CE' : CE, 'ECM': ECM, 'ECE': ECE, 'AIDS': AIDS, 'CSIT': CSIT,
+        'BBA': BBA, 'MBA': MBA, 'LLB': LLB, 'BCom': BCom, 'MCom': MCom, 'BFA': BFA, 'BCA': BCA, 'Arch': Arch, 'FED': FED,
+        'MCA': MCA, 'BCA': BCA, 'BSCVC': BSCVC, 'BPharam': BPharam, 'MPharam': MPharam, 'Agri': Agri, 'BHM': BHM, 'BAIAS': BAIAS}
+    return render(request, 'admin_dashboard.html', context)
+
 
 class UsersViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializers
