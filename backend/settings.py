@@ -100,7 +100,9 @@ INSTALLED_APPS = [
     'home',
     'rest_framework',
     'corsheaders',
-    'import_export'
+    'import_export',
+    'bootstrap5',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -146,27 +148,27 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'samyak',
-        'USER': 'samyak',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '3306'
-    }
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'samyak',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
+#         'USER': 'samyak',
+#         'PASSWORD': 'password',
 #         'HOST': 'localhost',
 #         'PORT': '3306'
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'samyak',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306'
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -222,3 +224,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 API_KEY = '4ccc5441d9da753781d931e2be3bbbdf'
 AUTH_TOKEN = '3053d73950d684a1af77e22ccb29126e'
 SALT = '9f1d3102f7624b4b95c9e91361b29997'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+SITE_HOST = 'Samyak'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'klsamyak2022@gmail.com'
+EMAIL_HOST_PASSWORD = 'Charlie@123'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'klsamyak2022@gmail.com'
+SERVER_EMAIL = 'klsamyak2022@gmail.com'
