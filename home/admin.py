@@ -161,7 +161,7 @@ class PaymentResource(resources.ModelResource):
 class PaymentAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = PaymentResource
     list_display = ('user', 'payment_status', 'email', 'mojo_id', 'firstname', 'lastname', 'phone', 'branch', 'transaction_amount', 'receipt_id', 'payment_time', )
-    list_filter = ('payment_status', 'user__profile__branch')
+    list_filter = ('payment_status', 'user__profile__branch', 'user__profile__year_of_study')
     search_fields = ('user__username', 'user__email', 'user__first_name', 'user__last_name', 'user__profile__phone', 'mojo_id')
     ordering = ['user', 'receipt_id', 'payment_time']
     save_as = True
