@@ -170,7 +170,7 @@ class UsersViewSet(viewsets.ModelViewSet):
         print(request.data)
         displayData = request.data
         print("IN CREATE")
-        if User.objects.filter(username=displayData['username']).exists():
+        if "username" in displayData and User.objects.filter(username=displayData['username']).exists():
             return Response({"status": False, "message": "Username Already Exists.!"})
         elif User.objects.filter(email=displayData['email']).exists():
             return Response({"status": False, "message": "Email Already Exists.!"})
@@ -339,3 +339,21 @@ class EventsViewSet(viewsets.ModelViewSet):
     #     # allEvents = Event.objects.all()
     #     print(request)
     #     return Response({'data': 'hi'})
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializers()
+    class Meta:
+        model = User
+        fields = ['email', 'profile']
+class ProfileUpdateView(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = UserProfileSerializer
+    def get(self, request):
+        print("IN GET")
+        return Response({'status': 'get'})
+
+    def post(self, request):
+        print("IN POST")
+        print(request.data)
+        print(self.request.user)
+        return Response({'status': 'post'})

@@ -6,7 +6,7 @@ import { baseURL } from "../axios";
 class Validations {
     constructor(flash) {
         this.flash = flash;
-        this.register = document.getElementById('register');
+        this.register = this.register ? this.register.disabled = false : null;
     }
     async serverValidations(data) {
 

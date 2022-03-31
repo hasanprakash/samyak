@@ -11,6 +11,7 @@ import EventRecord from "./EventRecord";
 import samyakLogo from "./samyak_logo.png";
 import correct from "./payment_status/correct.jpg";
 import wrong from "./payment_status/wrong.jpg";
+import axiosInstance from "../../axios";
 
 const EditProfile = styled.div`
   float: right;
@@ -22,12 +23,13 @@ const EditProfile = styled.div`
 
 const UserProfile = (props) => {
 
+
   const { enqueueSnackbar } = useSnackbar();
   const flash = (message, messageVariant) => {
     enqueueSnackbar(message, { variant: messageVariant, autoHideDuration: 3000 });
   };
   const validations = new Validations(flash);
-
+  const [collegeType, setCollegeType] = useState("dropdown");
 
   let paidStatus = props.user
     ? props.user.payment
@@ -119,6 +121,7 @@ const UserProfile = (props) => {
   ];
 
   let dataToUpdate = {
+    Email: email,
     Phone: phone,
     Branch: branch,
     Year: year,
@@ -134,17 +137,37 @@ const UserProfile = (props) => {
     // props.onClick();
     console.log(dataToUpdate);
     let clientData = {}
+    clientData.email = dataToUpdate.Email;
     clientData.phoneno = dataToUpdate.Phone;
     clientData.year = dataToUpdate.Year;
     clientData.college = dataToUpdate.College;
     clientData.gender = dataToUpdate.Gender;
     clientData.branch = dataToUpdate.Branch;
-    let status = validations.clientValidations(clientData);
-    if(status) {
+    let clientStatus = validations.clientValidations(clientData);
+    // let serverStatus = validations.serverValidations(clientData);
+    if(clientStatus) {
       // update to database
+      axiosInstance
+        .post('../home/updateprofile', clientData)
+        .then(res => {
+          console.log(res.data);
+          flash("Profile Updated Successfully", "success");
+          // props.onClick();
+        })
+        .catch((e) => {
+          console.log(e);
+        })
       setIsUpdating(false);
     }
   };
+
+  const toggleCollegeType = () => {
+    if (collegeType === "dropdown") {
+      setCollegeType("input");
+    } else {
+      setCollegeType("dropdown");
+    }
+  }
 
   return (
     <div>
@@ -204,7 +227,13 @@ const UserProfile = (props) => {
                 <div className="card-body">
                   <br></br>
                   <DetailsObject heading="Name" value={name} />
-                  <DetailsObject heading="Email" value={email} />
+                  <DetailsObject 
+                    heading="Email" 
+                    value={email} 
+                    isUpdating={isUpdating}
+                    type="input"
+                    dataToUpdate={dataToUpdate}
+                  />
                   <DetailsObject
                     heading="Phone"
                     value={phone}
@@ -236,9 +265,10 @@ const UserProfile = (props) => {
                     heading="College"
                     value={college}
                     isUpdating={isUpdating}
-                    type="dropdown"
+                    type={collegeType}
                     data={collegeData}
                     dataToUpdate={dataToUpdate}
+                    toggleCollegeType={toggleCollegeType}
                   />
                   <DetailsObject
                     heading="Gender"
@@ -253,7 +283,7 @@ const UserProfile = (props) => {
                     tag={
                       props.user &&
                       props.user.payment &&
-                      props.user.payment_status
+                      props.user.payment.payment_status
                         ? correct
                         : wrong
                     }

@@ -26,6 +26,7 @@ const DetailsObject = (props) => {
             value={props.value}
             data={props.data}
             dataToUpdate={props.dataToUpdate}
+            toggleCollegeType={props.toggleCollegeType}
           />
         ) : props.isUpdating && props.type === "input" ? (
           <BaseProfileInput

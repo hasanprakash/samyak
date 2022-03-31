@@ -10,6 +10,9 @@ const BaseProfileDropdown = (props) => {
 
   const handleChange = (event) => {
     setMyValue(event.target.value);
+    if(props.name === "College" && event.target.value === "Others"){
+      props.toggleCollegeType();
+    }
     props.dataToUpdate[props.name] = event.target.value;
   };
 

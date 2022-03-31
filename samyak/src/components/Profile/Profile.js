@@ -32,6 +32,7 @@ const Profile = (props) => {
           },
         })
         .then((response) => {
+          console.log(response.data);
           if (
             response.data.payment ? response.data.payment.payment_status : false
           ) {
